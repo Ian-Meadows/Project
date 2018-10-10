@@ -18,6 +18,15 @@ body{
 	border: 0px;
 }
 
+#PageTitle{
+	height:50px;
+	width:vw;
+}
+#PageTitle h2{
+	color: black;
+	text-align: center;
+}
+
 #LoginHeader{
 	width:10%;
 	height:100%;
@@ -43,6 +52,19 @@ body{
 }
 
 #LoginForm{
+	color:black;
+	
+}
+
+
+#AccountCreationDiv{
+	background-color: lightblue;
+	margin: auto;
+    text-align:center;
+	display:table;
+}
+
+#AccountCreationForm{
 	color:black;
 	
 }
