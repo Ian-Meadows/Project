@@ -1,9 +1,14 @@
 body{
-	margin: 0px;
+	height:100%;
+    width:100%;
+    margin:0;
+    padding:0;
+
 }
 
 #SiteTitle{
 	color:black;
+	float: left;
 }
 
 .SiteHeader{
@@ -14,12 +19,30 @@ body{
 }
 
 #LoginHeader{
-	width:100px;
+	width:10%;
+	height:100%;
 	background-color: green;
-	border-width: 2px;
+	border: 2px solid black;
 	float:right;
+	display: table;
 }
 #LoginHeader p{
 	color:black;
+	display: table-cell;
+	
+	vertical-align: middle;
+	text-align: center;
+
+}
+
+#LoginDiv{
+	background-color: lightblue;
+	 margin: auto;
+    width:20%;
+}
+
+#LoginForm{
+	color:black;
 	
 }
+
