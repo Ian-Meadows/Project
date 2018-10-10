@@ -37,8 +37,9 @@ body{
 
 #LoginDiv{
 	background-color: lightblue;
-	 margin: auto;
-    width:20%;
+	margin: auto;
+    text-align:center;
+	display:table;
 }
 
 #LoginForm{
