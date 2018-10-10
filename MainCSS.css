@@ -1,3 +1,25 @@
+body{
+	margin: 0px;
+}
+
 #SiteTitle{
-	color:green;
+	color:black;
+}
+
+.SiteHeader{
+	background-color: limegreen;
+	width:vw;
+	height: 100px;
+	border: 0px;
+}
+
+#LoginHeader{
+	width:100px;
+	background-color: green;
+	border-width: 2px;
+	float:right;
+}
+#LoginHeader p{
+	color:black;
+	
 }
