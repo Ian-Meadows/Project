@@ -1,0 +1,24 @@
+
+
+
+.card{
+	height: 370px;
+	margin-top: auto;
+	margin-bottom: auto;
+	margin-left: auto;
+    margin-right: auto;
+	width: 400px;
+	background-color: rgba(0,0,0,0.5);
+}
+
+.sub-header{
+	color: white;
+}
+
+input {
+	border-radius: 4px;
+}
+
+a:hover{
+	color: grey;
+}
