@@ -4,6 +4,7 @@ window.onload = function(){
     	var username = document.getElementById("UsernameInput").value;
     	var password = document.getElementById("PasswordInput").value;
 		if(username == "user" && password == "password"){
+			alert("hi");
 			document.location.href = "Profile Page.html";
 		}
 	};  
