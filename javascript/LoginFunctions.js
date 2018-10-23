@@ -12,6 +12,9 @@ window.onload = function(){
 			document.cookie="true";
 			document.location = 'Profile Page.html';
 		}
+		else{
+			document.getElementById("PasswordInput").value = "";
+		}
 		return false;	
 	};  
 };
