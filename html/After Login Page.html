@@ -7,7 +7,6 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
     <link type="text/css" rel="stylesheet" href="../css/main.css" />
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -15,11 +14,70 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
+    <script src="http://code.jquery.com/jquery-2.2.0.js"></script>
+
+    <script>
+      
+
+    </script>
+
+
+    <script>
+      // Builds the HTML Table out of games.
+      function buildHtmlTable(selector) {
+      var games;
+      var gameData;
+      var url = 'http://www.nfl.com/liveupdate/scorestrip/ss.json';
+      
+      $.getJSON(url, function( data ) {
+        games = data.gms;
+
+        
+        var columns = addAllColumnHeaders(games, selector);
+        console.log(games[0].length)
+        for (var i = 0; i < games.length; i++) {
+          var row$ = $('<tr/>');
+          for (var colIndex = 0; colIndex < columns.length; colIndex++) {
+            var cellValue = games[i][columns[colIndex]];
+            if (cellValue == null) cellValue = "";
+            row$.append($('<td/>').html(cellValue));
+          }
+          $(selector).append(row$);
+        }
+
+       }); 
+      }
+
+
+
+      // Adds a header row to the table and returns the set of columns.
+      // Need to do union of keys from all records as some records may not contain
+      // all records.
+      function addAllColumnHeaders(games, selector) {
+        var columnSet = [];
+        var headerTr$ = $('<tr/>');
+
+        for (var i = 0; i < games.length; i++) {
+          var rowHash = games[i];
+
+          for (var key in rowHash) {
+            if ($.inArray(key, columnSet) == -1) {
+              columnSet.push(key);
+              headerTr$.append($('<th/>').html(key));
+            }
+          }
+        }
+        $(selector).append(headerTr$);
+
+        return columnSet;
+      }
+    </script>
+
     <title>Availble Games</title>
 
   </head>
 
-  <body>
+  <body onLoad="buildHtmlTable('#excelDataTable')">
     
 
   	<nav class="navigation-header"></nav>
@@ -32,6 +90,25 @@
     </nav>
 
     <br><br>
+
+    <table id="excelDataTable" border="10"></table>
+
+
+
+
+    <div class="container">
+        <table id="table">
+        <thead>
+            <tr>
+                <th data-field="games[0].hnn">Home Team</th>
+                <th data-field="vnn">Visiting Team</th>
+                <th data-field="hs">Home Score</th>
+                <th data-field="vs">Visitor Score</th>
+            </tr>
+        </thead>
+    </table>
+    </div>
+
 
   </body>
 </html>
