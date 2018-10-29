@@ -11,7 +11,7 @@ window.onload = function(){
 
 	document.getElementById("LoginButton").onclick = function(){
 		if(cookie == "true"){
-			document.location = 'Profile Page.html';
+			document.location = 'After Login Page.html';
 		}
 		else{
 			document.location = 'Login Page.html';

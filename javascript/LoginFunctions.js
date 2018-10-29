@@ -1,6 +1,6 @@
 window.onload = function(){ 
 	if(document.cookie == "true"){
-		document.location = 'Profile Page.html';
+		document.location = 'After Login Page.html';
 	}
     // your code
     document.getElementById("LoginButton").onclick = function(){
@@ -10,7 +10,7 @@ window.onload = function(){
     	var password = document.getElementById("PasswordInput").value;
 		if(username == "user" && password == "password"){
 			document.cookie="true";
-			document.location = 'Profile Page.html';
+			document.location = 'After Login Page.html';
 		}
 		else{
 			document.getElementById("PasswordInput").value = "";
