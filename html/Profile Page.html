@@ -13,11 +13,10 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="../javascript/ProfileUpload.js"></script>
 </head>
 <body>
 	<nav class="navigation-header"></nav>
-      <nav class="navbar navbar-light bg-light">
+      <nav class="navbar navbar-dark bg-dark">
       <a class="navbar-brand" href="Landing Page.html">Site Name</a>
     </nav>
 
@@ -25,38 +24,141 @@
 		<h2 class="text-center">
 			Account Profile
 		</h2>
-	    </br>
+	    <br>
 	</div>
 	<div class="ustify-content-right">
-		<div class="card bg-light text-black text-center" style="width: 22rem;height: 22rem">
+		<div class="card bg-dark text-white text-center" style="width: 22rem;height: 22rem">
 		<br>
 		<h5 class="card-title">profile photo:</h5>
 		<center>
-  		<em style="width: 200px;display: block">
-		<input type="file" style="opacity:0; filter:alpha(opacity=0); height: 200px; width: 200px; position: absolute; top: 0; left: 0; z-index: 9;" onchange="handleFiles(this,'icon')">
-		<img src="{$headimgurl}" onerror="this.src='https://cdn1.iconfinder.com/data/icons/rafif-rounded-glyph-vol-5/512/vol.5_boy-512.png'" style="height: 200px; width: 200px;" id="icon">
-		</em>
+  		<img class="img-circle" src="https://cdn1.iconfinder.com/data/icons/rafif-rounded-glyph-vol-5/512/vol.5_boy-512.png" alt="Account image" width="200" height="200">
   		</center>
   		<div class="card-body">
     	<a href="#" class="btn btn-primary" style=".bg-light">Edit</a>
   		</div>
 	</div>
+  <br><br><br>
 
-<div class="card bg-light text-black text-center" style="width: 50rem;height: 35rem">
+<div class="card bg-dark text-white text-center" style="width: 50rem;height: 40rem">
   <div class="card-header">
     <ul class="nav nav-tabs card-header-tabs">
       <li class="nav-item">
-        <a class="nav-link active" href="#">Basic</a>
+        <a class="nav-link active" id="Basic-table" data-toggle="tab" href="#Basic" role="tab" aria-controls="Basic" aria-selected="true">Basic</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Record</a>
+        <a class="nav-link" id="Record-tab" data-toggle="tab" href="#Record" role="tab" aria-controls="#Record" aria-selected="false">Record</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#">Fake Wallet</a>
+        <a class="nav-link" id="FakeWallet-tab" data-toggle="tab" href="#FakeWallet" role="tab" aria-controls="#FakeWallet" aria-selected="false">Fake Wallet</a>
       </li>
     </ul>
   </div>
-  <div class="card-body">
+  <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="Basic" role="tabpanel" aria-labelledby="Basic-table">
+      <br>
+      <label for="disabledInput" class="col-sm-2 control-label"><strong>UserName</strong></label>
+      <div class="col-sm-10">
+        <input class="form-control" id="disabledInput" type="text" style="margin-left: 10%" placeholder="UserName..." disabled>
+        <br>
+        <a href="#" class="btn btn-primary" style=".bg-light;margin-left: 100%">Edit</a>
+      </div>
+        <br><br>
+
+        <label for="disabledInput" class="col-sm-2 control-label"><strong>Password</strong></label>
+        <div class="col-sm-10">
+        <input class="form-control" id="disabledInput" type="text" style="margin-left: 10%" placeholder="Password..." disabled>
+        <br>
+        <a href="#" class="btn btn-primary" style=".bg-light;margin-left: 100%">Edit</a>
+      </div>
+        </div>
+        <div class="tab-pane fade" id="Record" role="tabpanel" aria-labelledby="Record-table">
+        <table class="table">
+<table class="table table-striped table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Date</th>
+      <th scope="col">Team</th>
+      <th scope="col">Score</th>
+      <th scope="col">WinRate</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>--</td>
+      <td>--</td>
+      <td>--</td>
+      <td>--</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>--</td>
+      <td>--</td>
+      <td>--</td>
+      <td>--</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>--</td>
+      <td>--</td>
+      <td>--</td>
+      <td>--</td>
+    </tr>
+    <tr>
+      <th scope="row">4</th>
+      <td>--</td>
+      <td>--</td>
+      <td>--</td>
+      <td>--</td>
+    </tr>
+    <tr>
+      <th scope="row">5</th>
+      <td>--</td>
+      <td>--</td>
+      <td>--</td>
+      <td>--</td>
+    </tr>
+    <tr>
+      <th scope="row">6</th>
+      <td>--</td>
+      <td>--</td>
+      <td>--</td>
+      <td>--</td>
+    </tr>
+    <tr>
+      <th scope="row">7</th>
+      <td>--</td>
+      <td>--</td>
+      <td>--</td>
+      <td>--</td>
+    </tr>
+    <tr>
+      <th scope="row">8</th>
+      <td>--</td>
+      <td>--</td>
+      <td>--</td>
+      <td>--</td>
+    </tr>
+    <tr>
+      <th scope="row">9</th>
+      <td>--</td>
+      <td>--</td>
+      <td>--</td>
+      <td>--</td>
+    </tr>
+    <tr>
+      <th scope="row">10</th>
+      <td>--</td>
+      <td>--</td>
+      <td>--</td>
+      <td>--</td>
+    </tr>
+  </tbody>
+</table>
+      </div>
+  </div>
+    </div>
   </div>
 </div>
 
