@@ -1,9 +1,16 @@
-window.onload = function{
+function WindowLoaded(){
+	
 	document.getElementById("LogoutButton").onclick = function(){
+	
 		Logout();
 	};
+
+
+
+
 };
 
-Logout = function(){
+function Logout(){
 	document.cookie="";
 }
+

@@ -9,7 +9,7 @@
 
         
         var columns = addAllColumnHeaders(games, selector);
-        console.log(games[0].length)
+        //console.log(games[0].length);
         for (var i = 0; i < games.length; i++) {
           var row$ = $('<tr/>');
           for (var colIndex = 0; colIndex < columns.length; colIndex++) {

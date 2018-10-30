@@ -1,5 +1,5 @@
 window.onload = function(){ 
-	if(document.cookie == "true"){
+	if(document.cookie === "true"){
 		document.location = 'After Login Page.html';
 	}
     // your code
@@ -8,7 +8,7 @@ window.onload = function(){
 		
     	var username = document.getElementById("UsernameInput").value;
     	var password = document.getElementById("PasswordInput").value;
-		if(username == "user" && password == "password"){
+		if(username === "user" && password === "password"){
 			document.cookie="true";
 			document.location = 'After Login Page.html';
 		}
