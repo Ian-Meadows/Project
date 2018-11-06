@@ -3,6 +3,11 @@ var app = express();
 
 //app.set('view engine', 'ejs');
 
+app.use(express.static('./'));
+//app.use(express.static('javascript/ClientSide'));
+app.use(express.static('css'));
+app.use(express.static('html'));
+
 var expressValidator = require('express-validator');
 app.use(expressValidator());
 
@@ -38,6 +43,26 @@ var store = require('./routes/store');
 app.use('/', index);
 app.use('/store', store);
 */
+
+app.get('/', function(req, res){
+    //res.writeHeader(200, {"Content-Type":"text/html"});
+    res.sendfile('html/Landing Page.html');
+    //res.sendfile('javascript/ClientSide/ConnectionTest.js');
+    //res.end();
+});
+
+app.get('/test', function (req, res){
+    console.log('yeet');
+
+    var j = {
+        message:"hi",
+        value:20
+    };
+
+    res.status(200)
+        .json(j)
+        .end;
+});
 
 var port = 4000;
 app.listen(port, function () {
