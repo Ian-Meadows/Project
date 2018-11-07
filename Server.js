@@ -118,7 +118,29 @@ app.get('/Login', function(req, res){
             .end();
     }
 
-})
+});
+
+app.get('/JoinGroup', function(req, res){
+    var query = req.query;
+    console.log(query);
+    if(query.groupName === 'group' && query.password === 'password'){
+        var r = {
+            response:"true"
+        };
+        res.status(200)
+            .json(r)
+            .end();
+    }
+    else{
+        var r = {
+            respose:"false"
+        };
+        res.status(200)
+            .json(r)
+            .end();
+    }
+});
+
 
 var port = 4000;
 app.listen(port, function () {
