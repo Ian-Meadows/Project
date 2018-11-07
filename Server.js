@@ -3,10 +3,11 @@ var app = express();
 
 //app.set('view engine', 'ejs');
 
-app.use(express.static('./'));
+app.use(express.static('Public'));
 //app.use(express.static('javascript/ClientSide'));
 app.use(express.static('css'));
 app.use(express.static('html'));
+
 
 var expressValidator = require('express-validator');
 app.use(expressValidator());
@@ -44,15 +45,27 @@ app.use('/', index);
 app.use('/store', store);
 */
 
+app.get('/AccountCreationPage', function(req, res){
+    res.sendfile('Public/html/AccountCreationPage.html');
+});
+
+app.get('/AfterLoginPage', function(req, res){
+    res.sendfile('Public/html/AfterLoginPage.html');
+});
+
+app.get('/LoginPage', function(req, res){
+    res.sendfile('Public/html/LoginPage.html');
+});
+
 app.get('/', function(req, res){
     //res.writeHeader(200, {"Content-Type":"text/html"});
-    res.sendfile('html/Landing Page.html');
+    res.sendfile('Public/html/LandingPage.html');
     //res.sendfile('javascript/ClientSide/ConnectionTest.js');
     //res.end();
 });
 
 app.get('/test', function (req, res){
-    console.log('yeet');
+    //console.log('yeet');
 
     var j = {
         message:"hi",

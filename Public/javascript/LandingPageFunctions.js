@@ -10,11 +10,14 @@ window.onload = function(){
 	}
 
 	document.getElementById("LoginButton").onclick = function(){
+		var currentLoc = document.location;
 		if(cookie == "true"){
-			document.location = 'After Login Page.html';
+			//document.location = currentLoc+'AfterLoginPage';
+			window.location.href = '/AfterLoginPage';
 		}
 		else{
-			document.location = 'Login Page.html';
+			//document.location = currentLoc+'LoginPage';
+			window.location.href = '/LoginPage';
 		}
 		return false;
 	};

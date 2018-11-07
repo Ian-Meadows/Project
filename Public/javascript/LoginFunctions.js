@@ -9,8 +9,12 @@ window.onload = function(){
     	var username = document.getElementById("UsernameInput").value;
     	var password = document.getElementById("PasswordInput").value;
 		if(username === "user" && password === "password"){
+
+			var currentLoc = document.location; 
+
 			document.cookie="true";
-			document.location = 'After Login Page.html';
+			//document.location = 'After Login Page.html';
+			window.location.href = '/AfterLoginPage';
 		}
 		else{
 			document.getElementById("PasswordInput").value = "";
