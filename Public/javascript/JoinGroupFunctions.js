@@ -7,9 +7,7 @@ window.onload = function(){
     	var groupPassword = document.getElementById("GroupPassword").value;
 
 		if(groupName === "group" && groupPassword === "password"){
-			
-			document.location = 'Group Page.html';
-
+			window.location.href = '/GroupPage';
 		}
 		else{
 			document.getElementById("GroupPassword").value = "";

@@ -45,6 +45,22 @@ app.use('/', index);
 app.use('/store', store);
 */
 
+app.get('/GroupJoinPage', function(req, res){
+    res.sendfile('Public/html/GroupJoinPage.html');
+});
+
+app.get('/GroupCreationPage', function(req, res){
+    res.sendfile('Public/html/GroupCreationPage.html');
+});
+
+app.get('/GroupPage', function(req, res){
+    res.sendfile('Public/html/GroupPage.html');
+});
+
+app.get('/ProfilePage', function(req, res){
+    res.sendfile('Public/html/ProfilePage.html');
+});
+
 app.get('/AccountCreationPage', function(req, res){
     res.sendfile('Public/html/AccountCreationPage.html');
 });
