@@ -1,12 +1,14 @@
 var express = require('express');
 var app = express();
+const querystring = require('querystring');
+//const decodeUriComponentExt = require('decodeuricomponent');
 
 //app.set('view engine', 'ejs');
 
 app.use(express.static('Public'));
 //app.use(express.static('javascript/ClientSide'));
-app.use(express.static('css'));
-app.use(express.static('html'));
+//app.use(express.static('css'));
+//app.use(express.static('html'));
 
 
 var expressValidator = require('express-validator');
@@ -92,6 +94,31 @@ app.get('/test', function (req, res){
         .json(j)
         .end;
 });
+
+//req:request
+//res:response
+app.get('/Login', function(req, res){
+    
+    var query = req.query;
+    if(query.username === 'user' && query.password === 'password'){
+        var c = {
+            cookie:"true"
+        };
+        res.status(200)
+            .json(c)
+            .end();
+    }
+    else{
+        var c = {
+            cookie:"false"
+        };
+
+        res.status(200)
+            .json(c)
+            .end();
+    }
+
+})
 
 var port = 4000;
 app.listen(port, function () {
