@@ -1,0 +1,81 @@
+
+
+
+CREATE DATABASE Database
+WITH ENCODING 'LATIN9' LC_COLLATE = 'C' LC_CTYPE='C' TEMPLATE=template0;
+
+
+CREATE TABLE IF NOT EXISTS UserTable(
+	ID int NOT NULL,
+	Username varchar(32) NOT NULL,
+	Email varchar(55) NOT NULL,
+	Password varchar(255) NOT NULL,
+	GroupID int  NOT NULL,
+	Funds int NOT NULL,
+	PRIMARY KEY(ID)
+);
+
+
+
+CREATE TABLE IF NOT EXISTS Game(
+	ID int NOT NULL UNIQUE,
+	Home varchar(55),
+	HomeScore int,
+	Visitor varchar(55),
+	VisitorScore int,
+	Description varchar(255),
+	StartDate DATE,
+	Status varchar(20),
+	PRIMARY KEY(ID)
+
+);
+
+CREATE TABLE IF NOT EXISTS GroupTable(
+
+	ID int NOT NULL UNIQUE,
+	Name varchar(55),
+	Description varchar(255),
+	Password varchar(255),
+	Max_Members int,
+	PRIMARY KEY(ID)
+);
+
+CREATE TABLE IF NOT EXISTS UserGame(
+	UserID int PRIMARY KEY,
+	GameID int,
+	foreign key(UserID)references UserTable(ID),
+	foreign key(GameID)references Game(ID)
+
+);
+
+CREATE TABLE IF NOT EXISTS Bets(
+	UserID int PRIMARY KEY,
+	GameID int,
+	GroupID int,
+
+	foreign key(UserID) references UserTable(ID),
+	foreign key(GameID) references Game(ID),
+	Bet int,
+	foreign key(GroupID) references GroupTable(ID)
+);
+
+
+
+CREATE TABLE IF NOT EXISTS UserGroup(
+	UserID int,
+	GroupID int PRIMARY KEY,
+
+
+	foreign key(UserID) references UserTable(ID),
+	foreign key(GroupID) references GroupTable(ID)
+
+);
+
+CREATE TABLE IF NOT EXISTS GroupGame(
+	GroupID int PRIMARY KEY,
+	GameID int,
+
+	foreign key(GroupID) references GroupTable(ID),
+	foreign key(GameID) references Game(ID)
+
+);
