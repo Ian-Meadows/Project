@@ -2,6 +2,8 @@ var express = require('express');
 var db = require('./database/Database');
 var app = express();
 const querystring = require('querystring');
+
+const START_MONEY_AMOUNT = 100;
 //const decodeUriComponentExt = require('decodeuricomponent');
 
 //app.set('view engine', 'ejs');
@@ -84,13 +86,45 @@ app.get('/', function(req, res){
 });
 
 app.get('/CreateAccount', function(req, res){
-    var account = req.query;
+    // Validate user input
+    req.assert('username', 'Username is required').notEmpty();
+    //req.assert('email', 'Email is required').notEmpty();
+    req.assert('password', 'Password is required').notEmpty();
 
-    var query = 'insert into users(username, email, password, funds) values($1, $2, $3, 100);';
+    var errors = req.validationErrors();
 
-    db.none(query, [account.username, 'yourmom@myhouse.com', account.password]);
+    if(!errors){
+        var cleaned = {
+            username: req.sanitize('username').escape().trim(),
+            //email : req.sanitize('email').escape().trim(),
+            password: req.sanitize('password').escape().trim()
+        };
 
+        // Need a way to check if username already exists
+        // Need a way to validate password 
+
+        var query = 'insert into users(username, email, password, funds) values($1, $2, $3, $4);';
+
+        db.none(query, [cleaned.username, 'cleaned.email', cleaned.password, START_MONEY_AMOUNT])
+            .then(function(result) {
+                req.flash('success', 'Your account has been created successfully!');
+
+                //response.render()
+            }).catch(function (err) {
+                req.flash('error', err);
+                //response.render()
+            })
+    }else{
+        console.log('error!!');
+
+        var error_msg = errors.reduce((accumulator, current_error)=> accumulator + '<br />' + current_error.msg, '');
+        req.flash('error', error_msg);
+
+        console.log(error_msg);
+        //response.render()
+    }
 });
+
 
 app.get('/test', function (req, res){
     //console.log('yeet');
