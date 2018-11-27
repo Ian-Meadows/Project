@@ -7,14 +7,14 @@ $(document).ready(function(){
 		var repassword = document.getElementById("repassword").value;
 
 		if(password === repassword){
-			var account = {
+			var req = {
 				username:name,
 				password:repassword
 			};
 
 			$.ajax({
 				url:'/CreateAccount',
-				data:account
+				data:req
 			}).done(function(data) {
 				/*
   				document.cookie = data.cookie;

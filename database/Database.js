@@ -5,7 +5,7 @@ const dbConfig = {
    port: 5432,
    database: 'database',
    user: 'postgres',
-   password: '' // TODO: Fill in your PostgreSQL password here.
+   password: 'password' // TODO: Fill in your PostgreSQL password here.
                 // Use empty string if you did not set a password
 };
 

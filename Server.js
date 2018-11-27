@@ -1,5 +1,5 @@
 var express = require('express');
-var db = require('../database');
+var db = require('./database/Database');
 var app = express();
 const querystring = require('querystring');
 //const decodeUriComponentExt = require('decodeuricomponent');
@@ -81,6 +81,15 @@ app.get('/', function(req, res){
     res.sendfile('Public/html/LandingPage.html');
     //res.sendfile('javascript/ClientSide/ConnectionTest.js');
     //res.end();
+});
+
+app.get('/CreateAccount', function(req, res){
+    var account = req.query;
+
+    var query = 'insert into users(username, email, password, funds) values($1, $2, $3, 100);';
+
+    db.none(query, [account.username, 'yourmom@myhouse.com', account.password]);
+
 });
 
 app.get('/test', function (req, res){
