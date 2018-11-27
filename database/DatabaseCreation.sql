@@ -5,12 +5,11 @@ CREATE DATABASE Database
 WITH ENCODING 'LATIN9' LC_COLLATE = 'C' LC_CTYPE='C' TEMPLATE=template0;
 
 
-CREATE TABLE IF NOT EXISTS UserTable(
-	ID int NOT NULL,
+CREATE TABLE IF NOT EXISTS Users(
+	ID serial NOT NULL,
 	Username varchar(32) NOT NULL,
 	Email varchar(55) NOT NULL,
 	Password varchar(255) NOT NULL,
-	GroupID int  NOT NULL,
 	Funds int NOT NULL,
 	PRIMARY KEY(ID)
 );
@@ -43,7 +42,7 @@ CREATE TABLE IF NOT EXISTS GroupTable(
 CREATE TABLE IF NOT EXISTS UserGame(
 	UserID int PRIMARY KEY,
 	GameID int,
-	foreign key(UserID)references UserTable(ID),
+	foreign key(UserID)references Users(ID),
 	foreign key(GameID)references Game(ID)
 
 );
@@ -53,7 +52,7 @@ CREATE TABLE IF NOT EXISTS Bets(
 	GameID int,
 	GroupID int,
 
-	foreign key(UserID) references UserTable(ID),
+	foreign key(UserID) references Users(ID),
 	foreign key(GameID) references Game(ID),
 	Bet int,
 	foreign key(GroupID) references GroupTable(ID)
@@ -66,7 +65,7 @@ CREATE TABLE IF NOT EXISTS UserGroup(
 	GroupID int PRIMARY KEY,
 
 
-	foreign key(UserID) references UserTable(ID),
+	foreign key(UserID) references Users(ID),
 	foreign key(GroupID) references GroupTable(ID)
 
 );
