@@ -19,7 +19,7 @@ app.get('/ProfilePage', function(req, res){
 });
 
 app.get('/AccountCreationPage', function(req, res){
-    res.sendFile(__dirname + '/Public/html/AccountCreationPage.html');
+    res.sendFile(__dirname +'/Public/html/AccountCreationPage.html');
 });
 
 app.get('/AfterLoginPage', function(req, res){
@@ -36,10 +36,6 @@ app.get('/', function(req, res){
     //res.sendFile('javascript/ClientSide/ConnectionTest.js');
     //res.end();
 });
-
-
-
-
 
 module.exports = app;
 

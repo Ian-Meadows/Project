@@ -2,6 +2,8 @@ $(document).ready(function(){
 
 	document.getElementById("CreationButton").onclick = function(){
 
+		console.log('in account js')
+
 		var name = document.getElementById("username").value;
 		var password = document.getElementById("password").value;
 		var repassword = document.getElementById("repassword").value;

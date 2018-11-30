@@ -1,5 +1,4 @@
 var express = require('express');
-var db = require('./database/Database');
 var app = express();
 const querystring = require('querystring');
 
@@ -23,6 +22,7 @@ app.use(bodyParser.json());
 
 var methodOverride = require('method-override');
 app.use(methodOverride(function (req, res) {
+    console.log(req.query)
     if (req.body && typeof req.body === 'object' && '_method' in req.body) {
         var method = req.body._method;
         delete req.body._method;
@@ -50,7 +50,7 @@ app.use('/', index);
 app.use('/store', store);
 */
 
-
+/*
 app.get('/CreateAccount', function(req, res){
     // Validate user input
     req.assert('username', 'Username is required').notEmpty();
@@ -89,7 +89,7 @@ app.get('/CreateAccount', function(req, res){
         console.log(error_msg);
         //response.render()
     }
-});
+});*/
 
 
 app.get('/test', function (req, res){
@@ -152,7 +152,11 @@ app.get('/JoinGroup', function(req, res){
 });
 
 var PageHandler = require('./PageHandler');
+var CreateAccount = require('./routes/accounts');
+
 app.use('/', PageHandler);
+app.use('/CreateAccount', CreateAccount);
+
 
 var port = 4000;
 app.listen(port, function () {
