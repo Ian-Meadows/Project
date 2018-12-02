@@ -105,57 +105,21 @@ app.get('/test', function (req, res){
         .end;
 });
 
-//req:request
-//res:response
-app.get('/Login', function(req, res){
-    
-    var query = req.query;
-    if(query.username === 'user' && query.password === 'password'){
-        var c = {
-            cookie:"true"
-        };
-        res.status(200)
-            .json(c)
-            .end();
-    }
-    else{
-        var c = {
-            cookie:"false"
-        };
 
-        res.status(200)
-            .json(c)
-            .end();
-    }
 
-});
 
-app.get('/JoinGroup', function(req, res){
-    var query = req.query;
-    console.log(query);
-    if(query.groupName === 'group' && query.password === 'password'){
-        var r = {
-            response:"true"
-        };
-        res.status(200)
-            .json(r)
-            .end();
-    }
-    else{
-        var r = {
-            respose:"false"
-        };
-        res.status(200)
-            .json(r)
-            .end();
-    }
-});
 
 var PageHandler = require('./PageHandler');
 var CreateAccount = require('./routes/accounts');
+var CreateGroup = require('./routes/CreateGroup');
+var JoinGroup = require('./routes/JoinGroup');
+var Login = require('./routes/Login');
 
 app.use('/', PageHandler);
 app.use('/CreateAccount', CreateAccount);
+app.use('/CreateGroup', CreateGroup);
+app.use('/JoinGroup', JoinGroup);
+app.use('/Login', Login);
 
 
 var port = 4000;
