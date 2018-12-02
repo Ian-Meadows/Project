@@ -21,7 +21,7 @@ app.get('/', function(req, res){
             //logged in
             var c = {
                 //TODO:Use an actual cookie
-                cookie:"true";
+                cookie:"true"
             };
             res.status(200)
                 .json(c)
