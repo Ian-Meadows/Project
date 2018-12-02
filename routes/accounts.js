@@ -16,7 +16,7 @@ app.get('/', function(req, res){
     console.log('You did it!')
     // Validate user input
     req.assert('username', 'Username is required').notEmpty();
-    //req.assert('email', 'Email is required').notEmpty();
+    req.assert('email', 'Email is required').notEmpty();
     req.assert('password', 'Password is required').notEmpty();
 
     var errors = req.validationErrors();
@@ -24,7 +24,7 @@ app.get('/', function(req, res){
     if(!errors){
         var cleaned = {
             username: req.sanitize('username').escape().trim(),
-            //email : req.sanitize('email').escape().trim(),
+            email : req.sanitize('email').escape().trim(),
             password: req.sanitize('password').escape().trim()
         };
 
@@ -33,7 +33,7 @@ app.get('/', function(req, res){
 
         var query = 'insert into users(username, email, password, funds) values($1, $2, $3, $4);';
 
-        db.none(query, [cleaned.username, 'cleaned.email', cleaned.password, START_MONEY_AMOUNT])
+        db.none(query, [cleaned.username, cleaned.email, cleaned.password, START_MONEY_AMOUNT])
             .then(function(result) {
                 req.flash('success', 'Your account has been created successfully!');
 

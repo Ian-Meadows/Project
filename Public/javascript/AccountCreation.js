@@ -5,12 +5,14 @@ $(document).ready(function(){
 		console.log('in account js')
 
 		var name = document.getElementById("username").value;
+		var form_email = document.getElementById("email").value;
 		var password = document.getElementById("password").value;
 		var repassword = document.getElementById("repassword").value;
 
 		if(password === repassword){
 			var req = {
 				username:name,
+				email:form_email,
 				password:repassword
 			};
 
