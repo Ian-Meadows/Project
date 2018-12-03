@@ -2,6 +2,7 @@
 function buildHtmlTable(selector) {
       var games;
       var gameData;
+      var scoreColor;
       var url = 'http://www.nfl.com/liveupdate/scorestrip/ss.json';
       
       $.getJSON(url, function( data ) {
@@ -24,7 +25,10 @@ function buildHtmlTable(selector) {
         for (var i = 0; i < games.length; i++) {
 
           // Adjusts the color of the row depending on the game status
-          row$ = $(getRowColor(games[i].q));
+          row$ = $('<tr>');
+
+          scoreColor = getScoreColor(games[i].hs, games[i].vs)
+
 
           // Home team name
           var cellValue = games[i].hnn;
@@ -34,7 +38,7 @@ function buildHtmlTable(selector) {
           // Homw team score
           var cellValue = games[i].hs;
           if (cellValue == null) cellValue = "";
-          row$.append($('<td/>').html(cellValue));
+          row$.append($(scoreColor[0]).html(cellValue));
 
           // Visitor team name
           var cellValue = games[i].vnn;
@@ -44,12 +48,12 @@ function buildHtmlTable(selector) {
           // Visitor team score
           var cellValue = games[i].vs;
           if (cellValue == null) cellValue = "";
-          row$.append($('<td/>').html(cellValue));
+          row$.append($(scoreColor[1]).html(cellValue));
 
           // Game status
           var cellValue = getStatus(games[i].q);
           if (cellValue == null) cellValue = "";
-          row$.append($('<td/>').html(cellValue));
+          row$.append($(getStatusColor(games[i].q)).html(cellValue));
 
 
           // Add the row data to the table
@@ -91,16 +95,25 @@ function getStatus(status) {
   return status;
 }
 
-function getRowColor(status) {
+function getStatusColor(status) {
   if(status == 'P'){
-    return '<tr bgcolor="yellow">';
+    return '<td style="color:orange">';
   }
   if (status == '1' || status == '2' || status == '3' || status == '4'){
-    return '<tr bgcolor="green">';
+    return '<td style="color:green">';
 
   }
 
-  return '<tr>';
+  return '<td>';
+}
+
+function getScoreColor(home, visitor) {
+  if (home > visitor){
+    return ['<td style="color:green">', '<td style="color:red">'];
+  }
+
+  return ['<td style="color:red">', '<td style="color:green">'];
+  
 }
 
 
