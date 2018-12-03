@@ -88,8 +88,13 @@ function getStatus(status) {
   if(status == '3'){
     return status + 'rd Quarter';
   } 
+
   if(status == '4'){
     return status + 'th Quarter';
+  }
+
+  if(status == 'H'){
+    return 'Halftime';
   }
 
   return status;
@@ -99,7 +104,7 @@ function getStatusColor(status) {
   if(status == 'P'){
     return '<td style="color:orange">';
   }
-  if (status == '1' || status == '2' || status == '3' || status == '4'){
+  if (status == '1' || status == '2' || status == '3' || status == '4' || status == 'H'){
     return '<td style="color:green">';
 
   }
