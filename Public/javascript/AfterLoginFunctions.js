@@ -1,5 +1,5 @@
 // Builds the HTML Table out of games.
-      function buildHtmlTable(selector) {
+function buildHtmlTable(selector) {
       var games;
       var gameData;
       var url = 'http://www.nfl.com/liveupdate/scorestrip/ss.json';
@@ -15,6 +15,7 @@
         headerTr$.append($('<th/>').html('Score'));
         headerTr$.append($('<th/>').html('Visitor'));
         headerTr$.append($('<th/>').html('Score'));
+        headerTr$.append($('<th/>').html('Status'))
 
         $(selector).append(headerTr$);
 
@@ -24,21 +25,31 @@
 
           row$ = $('<tr/>');
 
+          // Home team name
           var cellValue = games[i].hnn;
           if (cellValue == null) cellValue = "";
           row$.append($('<td/>').html(cellValue));
 
+          // Homw team score
           var cellValue = games[i].hs;
           if (cellValue == null) cellValue = "";
           row$.append($('<td/>').html(cellValue));
 
+          // Visitor team name
           var cellValue = games[i].vnn;
           if (cellValue == null) cellValue = "";
           row$.append($('<td/>').html(cellValue));
 
+          // Visitor team score
           var cellValue = games[i].vs;
           if (cellValue == null) cellValue = "";
           row$.append($('<td/>').html(cellValue));
+
+          // Game status
+          var cellValue = getStatus(games[i].q);
+          if (cellValue == null) cellValue = "";
+          row$.append($('<td/>').html(cellValue));
+
 
           // Add the row data to the table
           $(selector).append(row$);
@@ -46,5 +57,43 @@
 
        }); 
       }
+
+// Makes the game status row look nice
+function getStatus(status) {
+  if (status == 'F'){
+    return 'Final';
+  }
+
+  if (status == 'FO'){
+    return 'Final OT';
+  }
+
+  if(status == 'P'){
+    return 'Upcoming';
+  }
+
+  if(status == '1'){
+    return status + 'st Quarter';
+  } 
+
+  if(status == '2'){
+    return status + 'nd Quarter';
+  } 
+
+  if(status == '3'){
+    return status + 'rd Quarter';
+  } 
+  if(status == '4'){
+    return status + 'th Quarter';
+  }
+
+  return status;
+}
+
+
+
+
+
+
 
 
