@@ -23,7 +23,8 @@ function buildHtmlTable(selector) {
         // Gets scores and team names for each game and add to a table in the database
         for (var i = 0; i < games.length; i++) {
 
-          row$ = $('<tr/>');
+          // Adjusts the color of the row depending on the game status
+          row$ = $(getRowColor(games[i].q));
 
           // Home team name
           var cellValue = games[i].hnn;
@@ -88,6 +89,18 @@ function getStatus(status) {
   }
 
   return status;
+}
+
+function getRowColor(status) {
+  if(status == 'P'){
+    return '<tr bgcolor="yellow">';
+  }
+  if (status == '1' || status == '2' || status == '3' || status == '4'){
+    return '<tr bgcolor="green">';
+
+  }
+
+  return '<tr>';
 }
 
 
