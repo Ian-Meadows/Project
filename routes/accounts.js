@@ -36,7 +36,8 @@ app.get('/', function(req, res){
         db.none(query, [cleaned.username, cleaned.email, cleaned.password, START_MONEY_AMOUNT])
             .then(function(result) {
                 req.flash('success', 'Your account has been created successfully!');
-
+                res.json({ success: 'true' });
+                console.log("success")
                 //response.render()
             }).catch(function (err) {
                 req.flash('error', err);
