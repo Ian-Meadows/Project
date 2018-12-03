@@ -112,6 +112,10 @@ function getScoreColor(home, visitor) {
     return ['<td style="color:green">', '<td style="color:red">'];
   }
 
+  if(home == visitor){
+    return ['<td style="color:orange">', '<td style="color:orange">'];
+  }
+
   return ['<td style="color:red">', '<td style="color:green">'];
   
 }
