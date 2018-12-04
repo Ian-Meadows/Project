@@ -7,30 +7,55 @@ var db = require('../database/Database');
 
 
 app.get('/', function(req, res){
-	var query = '';
 
-	db.any(query)
-	.then(function(rows){
-		console.log(rows);
-		var data = {
-			rows:rows,
-			success:"true"
-		};
+	var userid = 0;
 
-		res.status(200)
-            .json(rows)
-            .end();
+	
+	
 
+	var userInfo = req.query;
+	var username = userInfo.username;
+
+	var query1 = 'select ID from Users where Username = $1';
+	db.one(query1, username)
+	.then(function(data){
+		userid = data.id;
+		if(userid > 0){
+			var query2 = 'select * from UserGroup inner join grouptable on UserGroup.GroupID=GroupTable.ID where UserGroup.UserID=$1';
+			
+			db.any(query2, userid)
+			.then(function(rows){
+				console.log(rows);
+				var data = {
+					rows:rows,
+					success:"true"
+				};
+
+				res.status(200)
+		            .json(rows)
+		            .end();
+
+
+			})
+			.catch(function(err){
+				var data = {
+					rows:"false",
+					success:"false"
+				};
+
+				res.status(200)
+		            .json(rows)
+		            .end();
+		        console.log('ERROR: no groups');
+			});
+		}
 	})
 	.catch(function(err){
-		var data = {
-			rows:"false",
-			success:"false"
-		};
-
-		res.status(200)
-            .json(rows)
-            .end();
+		console.log("ERROR: Failed to find user");
 	});
+
+
+	
+	
 });
 
