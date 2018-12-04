@@ -36,8 +36,20 @@ app.get('/', function(req, res){
                 if (cleaned.username == rows.username && cleaned.password == rows.password){
                     var c = {
                         //TODO:Use an actual cookie
-                        cookie:"true"
+                        cookie:rows.username,
+                        passed:"true"
                     };
+                    res.status(200)
+                        .json(c)
+                        .end();
+                }
+                else{
+                    var c = {
+                        cookie:"false",
+                        passed:"false"
+
+                    };
+
                     res.status(200)
                         .json(c)
                         .end();
@@ -49,7 +61,9 @@ app.get('/', function(req, res){
             .catch(function(data){
 
                 var c = {
-                        cookie:"false"
+                        cookie:"false",
+                        passed:"false"
+
                     };
 
                 res.status(200)

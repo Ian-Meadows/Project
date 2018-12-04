@@ -21,7 +21,7 @@ $(document).ready(function(){
 			data:req
 		}).done(function(data) {
   			document.cookie = data.cookie;
-    		if(document.cookie === "true"){
+    		if(data.passed === "true"){
     			window.location.href = '/AfterLoginPage';
     		} 
     		else{
