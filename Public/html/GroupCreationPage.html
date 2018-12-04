@@ -9,7 +9,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="../css/login.css">
+    <link rel="stylesheet" type="text/css" href="../css/GroupCreationPage.css">
     <title>GroupCreationPage</title>
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -18,17 +18,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-    <script src="../javascript/GroupCreation.js"></script>
+    <script src="../javascript/LoginFunctions.js"></script>
   </head>
 <body style="text-align: center" background="../resources/grass-wallpapers.jpg">
+
+
 	<nav class="navigation-header"></nav>
       <nav class="navbar navbar-light bg-dark">
-      <a class="navbar-brand" href="/">
+      <a class="navbar-brand" href="LandingPage.html">
       <img src="../resources/logo.png" class="img-rounded" height="80" width="80">
     </a>
     </nav>
 
 <br><br><br>
+
     <div class="card">
       <div class="card-body justify-content-center">
         <form class="form-login text-center">
@@ -43,11 +46,24 @@
           <div class="form-group">
             <input type="password" id="GroupPassword" placeholder="Password(not required)">
           </div>
+
+          <div class="form-group">
+          	<textarea rows="3" cols="20" name="GroupDescription" placeholder="Description"></textarea>
+          </div>
+
+          <div class="form-group">
+          	<select class="custom-select custom-select-sm" style="width: 180px">
+  				<option selected>Select Max Members</option>
+  				<option value="5">5</option>
+  				<option value="10">10</option>
+  				<option value="15">15</option>
+			</select>
+          </div>
           <br>
           <button class="btn btn-success" id="CreationButton">Create</button>
 
         </form>
-</div></div>
+
 
 </body>
 </html>
