@@ -1,4 +1,8 @@
 $(document).ready(function() {
+
+	var div = document.getElementById("GroupList");
+
+
 	var req = {
 		username: document.cookie
 	};
@@ -6,8 +10,14 @@ $(document).ready(function() {
 			url:'/GetGroups',
 			data:req
 		}).done(function(data) {
-  			if (data.success === "true") {
-  				
-  			}
+  			console.log(data);
+  			CreateGroupList(div, data);
 		});
 });
+
+
+
+
+function CreateGroupList(div, data){
+
+}

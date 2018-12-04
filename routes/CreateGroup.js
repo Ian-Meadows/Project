@@ -18,7 +18,7 @@ app.get('/', function(req, res){
 	var errors = req.validationErrors();
 
 	if(!errors){
-		db.one('select ID from Users where Username = $1;', 'user')//groupInfo.username)
+		db.one('select ID from Users where Username = $1;', groupInfo.username)//groupInfo.username)
 			.then(function(result){
 				userID = result.id;
 
