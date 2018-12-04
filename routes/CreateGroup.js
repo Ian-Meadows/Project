@@ -9,6 +9,7 @@ app.get('/', function(req, res){
 	var groupInfo = req.query;
 	var insertGroup = 'insert into grouptable(name, description, password, max_members) values($1, $2, $3, $4);';
 	var insertUserGroup = 'insert into usergroup(groupid, userid) values($1, $2);';
+	var checkExisitingGroup = 'select name from grouptable where name=$1;'
 	var userID;
 	var groupID;
 	
@@ -21,48 +22,52 @@ app.get('/', function(req, res){
 			.then(function(result){
 				userID = result.id;
 
-				
-				db.none(insertGroup, [groupInfo.GroupName, groupInfo.GroupDes, groupInfo.GroupPassword, groupInfo.GroupUsers])
+				db.any(checkExisitingGroup, [groupInfo.GroupName])
 					.then(function(result){
-						console.log("group inserted")
+						console.log('The existing group is:')
+						console.log(result)
 
-						db.one('select id from grouptable where name = $1;', groupInfo.GroupName)
-							.then(function(result){
-								groupID = result.id
+						
+						
+						if(result.length == 0){
+							db.none(insertGroup, [groupInfo.GroupName, groupInfo.GroupDes, groupInfo.GroupPassword, groupInfo.GroupUsers])
+								.then(function(result){
+									console.log("group inserted")
 
-								db.none(insertUserGroup, [groupID, userID])
-								    .then(function(result){
-								    	console.log('check usergroup table!!')
+									db.one('select id from grouptable where name = $1;', groupInfo.GroupName)
+										.then(function(result){
+											groupID = result.id
 
-								    }).catch(function(err){
-								    	console.log('failed insert to usergroup')
-								});
+											db.none(insertUserGroup, [groupID, userID])
+											    .then(function(result){
+											    	console.log('check usergroup table!!')
 
-							}).catch(function(err){
-								console.log('error getting group id')
-						});
+											    }).catch(function(err){
+											    	console.log('failed insert to usergroup')
+											});
 
-					}).catch(function(err){
-					            console.log(err)
-					            console.log('error on group insert')
-				});
+										}).catch(function(err){
+											console.log('error getting group id')
+									});
 
+								}).catch(function(err){
+								            console.log(err)
+								            console.log('error on group insert')
+							});
+						}
 
+						
 
-
-
+					}).catch(function(result){
+						console.log('getting group name failed!')
+					})
+				
+				
 
 			}).catch(function(err){
 				console.log(err)
 				console.log('error getting user id')
 		});
-
-		
-
-		
-
-
-		
 			
 
 	}else{
@@ -71,20 +76,3 @@ app.get('/', function(req, res){
 
 });
 
-
-function checkCheckAvail(){
-
-	console.log('Test')
-	
-}
-
-
-function getUserID(username){
-	
-}
-
-
-function getGroupID(groupname){
-	
-
-}

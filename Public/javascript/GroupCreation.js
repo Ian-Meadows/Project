@@ -13,7 +13,7 @@ $(document).ready(function(){
 				GroupPassword:password,
 				GroupDes:des,
 				GroupUsers:numUsers,
-				username: 'User'//document.cookie
+				username: document.cookie
 			};
 
 			console.log(req)
