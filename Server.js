@@ -114,12 +114,14 @@ var CreateAccount = require('./routes/accounts');
 var CreateGroup = require('./routes/CreateGroup');
 var JoinGroup = require('./routes/JoinGroup');
 var Login = require('./routes/Login');
+var GetGroups = require('./routes/GetGroups');
 
 app.use('/', PageHandler);
 app.use('/CreateAccount', CreateAccount);
 app.use('/CreateGroup', CreateGroup);
 app.use('/JoinGroup', JoinGroup);
 app.use('/Login', Login);
+app.use('/GetGroups', GetGroups);
 
 
 var port = 4000;
