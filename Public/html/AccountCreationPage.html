@@ -6,7 +6,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/AccountCreationPage.css">
+    <link rel="stylesheet" type="text/css" href="../css/AccountCreationPage.css">
     <title>Account Creation</title>
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -19,20 +19,20 @@
 
 
   </head>
-<body>
+<body background="../resources/ball-fun-game-364308.jpg">
+	<font color="white">
 	<nav class="navigation-header"></nav>
-      <nav class="navbar navbar-light bg-light">
-      <a class="navbar-brand" href="/">Site Name</a>
+      <nav class="navbar">
+      <img src="../resources/logo.png" class="img-rounded" height="60" width="60">
+      <a class="navbar-brand" href="/">Gambling Paradise</a>
     </nav>
-
+    <div class="card">
+    	<br>
 	<div id = "PageTitle">
 		<h2 class="text-center">
 			Account Creation
 		</h2>
-	    </br>
 	</div>
-
-
 	<div id="AccountCreationDiv" class="text-center">
 		<form action="/AccountCreationPage" method="get" id="AccountCreationForm">
 			<div class="username">
@@ -54,23 +54,20 @@
 				<h4>Confirm Password</h4>
 				<input type="password" name="RePassword" placeholder="Confirm your password" id = "repassword"style="width: 260px">
 			</div>
-
 			<br>
-
 			<div class="confirm-btn">
 				<button type="submit" class="btn btn-success" id = "CreationButton" style="width: 260px">Create</button>
 			</div>
-
-			<br><br>
-
+			<br>
 			<div class="signin">
 				Already have an account?
 				<a href="/LoginPage"> Sign in.</a>
 			</div>
+			<br>
 		</form>
 	</div>
-	
-
+	</div>
+</font>
 </body>
 
 </html>
