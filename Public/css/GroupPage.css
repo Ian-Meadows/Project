@@ -1,0 +1,31 @@
+body{
+	background-color: #868e96;
+}
+
+div{
+  	margin-top: auto;
+	margin-bottom: auto;
+	margin-left: auto;
+    margin-right: auto;
+}
+
+table{
+	margin-top: auto;
+	margin-bottom: auto;
+	margin-left: auto;
+    margin-right: auto;
+}
+
+input{
+	margin-top: auto;
+	margin-bottom: auto;
+	margin-left: auto;
+    margin-right: auto;
+}
+
+.btn-group btn-group-toggle{
+	margin-top: auto;
+	margin-bottom: auto;
+	margin-left: auto;
+    margin-right: auto;
+}
