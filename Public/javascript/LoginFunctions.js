@@ -20,11 +20,13 @@ $(document).ready(function(){
 			url:'/Login',
 			data:req
 		}).done(function(data) {
-  			document.cookie = data.cookie;
+  			
     		if(data.passed === "true"){
+    			document.cookie = data.cookie;
     			window.location.href = '/AfterLoginPage';
     		} 
     		else{
+    			document.cookie = "";
     			document.getElementById("PasswordInput").value = "";
     		}
 		});

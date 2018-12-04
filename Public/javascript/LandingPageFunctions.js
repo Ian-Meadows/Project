@@ -2,7 +2,7 @@ window.onload = function(){
 	
 	var p = document.getElementById("ButtonText");
 	var cookie = document.cookie;
-	if(cookie == "true"){
+	if(cookie != ""){
 		p.innerHTML = "Profile";
 	}
 	else{
@@ -11,7 +11,7 @@ window.onload = function(){
 
 	document.getElementById("LoginButton").onclick = function(){
 		var currentLoc = document.location;
-		if(cookie == "true"){
+		if(cookie != ""){
 			//document.location = currentLoc+'AfterLoginPage';
 			window.location.href = '/AfterLoginPage';
 		}
