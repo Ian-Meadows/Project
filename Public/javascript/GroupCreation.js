@@ -2,17 +2,21 @@ $(document).ready(function(){
 
 	document.getElementById("CreationButton").onclick = function(){
 
-		var password = '';
-		var name = '';
-
 		var name = document.getElementById("GroupName").value;
-		password = document.getElementById("GroupPassword").value;
+		var password = document.getElementById("GroupPassword").value;
+		var des = document.getElementById("GroupDescription").value;
+		var numUsers = document.getElementById("GroupUsers").value;
 
 		if(name != ''){
 			var req = {
 				GroupName:name,
-				GroupPassword:password
+				GroupPassword:password,
+				GroupDes:des,
+				GroupUsers:numUsers,
+				username: 'User'//document.cookie
 			};
+
+			console.log(req)
 
 			$.ajax({
 				url:'/CreateGroup',
