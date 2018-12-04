@@ -33,8 +33,19 @@ $(document).ready(function(){
                     document.getElementById("PasswordInput").value = "";
                 }
                 */
+
+                var pass = data.pass;
+                if(data.pass === "true"){
+                    window.location.href = '/LoginPage';
+                }
+                else{
+                    //say something to user
+                }
+            
+
+
                 console.log(data)
-        });
+            });
         }
 
         return false;

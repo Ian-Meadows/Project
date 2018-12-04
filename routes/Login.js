@@ -35,12 +35,12 @@ app.get('/', function(req, res){
 
                 if (cleaned.username == rows.username && cleaned.password == rows.password){
                     var c = {
-                    //TODO:Use an actual cookie
-                    cookie:"true"
-                };
-                res.status(200)
-                    .json(c)
-                    .end();
+                        //TODO:Use an actual cookie
+                        cookie:"true"
+                    };
+                    res.status(200)
+                        .json(c)
+                        .end();
                 }
                     
                 

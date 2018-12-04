@@ -30,18 +30,29 @@ app.get('/', function(req, res){
 
         // Need a way to check if username already exists
         // Need a way to validate password 
-
         var query = 'insert into users(username, email, password, funds) values($1, $2, $3, $4);';
 
         db.none(query, [cleaned.username, cleaned.email, cleaned.password, START_MONEY_AMOUNT])
             .then(function(result) {
                 req.flash('success', 'Your account has been created successfully!');
                 res.json({ success: 'true' });
-                console.log("success")
+                console.log("success");
+
+                var c = {
+                       //TODO:Use an actual cookie
+                    pass:"true"
+                };
+
+                res.status(200)
+                    .json(c)
+                    .end();
+
+
                 //response.render()
             }).catch(function (err) {
                 req.flash('error', err);
                 //response.render()
+                console.log("catch");
             })
     }else{
         console.log('error!!');
