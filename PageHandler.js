@@ -30,6 +30,10 @@ app.get('/LoginPage', function(req, res){
     res.sendFile(__dirname + '/Public/html/LoginPage.html');
 });
 
+app.get('/GroupList', function(req, res){
+    res.sendFile(__dirname + '/Public/html/GroupList.html');
+});
+
 app.get('/', function(req, res){
     //res.writeHeader(200, {"Content-Type":"text/html"});
     res.sendFile(__dirname + '/Public/html/LandingPage.html');
