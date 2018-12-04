@@ -6,7 +6,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/">
+    <link rel="stylesheet" href="../css/GroupPage.css">
     <title>Group Page</title>
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -14,15 +14,26 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
-<body>
-      <nav class="navigation-header"></nav>
+<nav class="navigation-header"></nav>
       <nav class="navbar navbar-dark bg-dark">
-      <a class="navbar-brand" href="/">Gambling Paradise</a>
-      <h2 class="text-right text-white">
+      <a class="navbar-brand" href="LandingPage.html">
+      <img src="../resources/logo.png" class="img-rounded" height="80" width="80">
+    </a>
+      <h2 class="text-right】 text-white">
 			Group Page
 		</h2>
     </nav>
-	   <div class="btn-group btn-group-toggle" data-toggle="buttons">
+<div class="content" style="text-align:center">
+		<div class="card bg-light mb-3 text-center" style="width: 18rem; height: 15rem">
+		<center>
+      <form class="container" enctype="multipart/form-data" method="post" id='formBox' name="form"> 
+      <img class="img-circle" src="https://cdn1.iconfinder.com/data/icons/rafif-rounded-glyph-vol-5/512/vol.5_boy-512.png" alt="Account image" width="200" height="200">
+      <h4 class="Group Name">Group Name</h4>     
+      </form>
+    </center>
+</div>
+
+<div class="btn-group btn-group-toggle"  data-toggle="buttons">
   <label class="btn btn-secondary active">
     <input type="radio" name="options" id="option1" autocomplete="off" checked> Members
   </label>
@@ -32,15 +43,15 @@
   <label class="btn btn-secondary">
     <input type="radio" name="options" id="option3" autocomplete="off"> Top Members
   </label>
-  </div>
+</div>
+</br>
 
-<div class="content-left">
-    <table class="table table-striped table-dark">
+    <table class="table table-striped table-dark" style="width:30%">
   <thead>
     <tr>
       <th scope="col">#</th>
       <th scope="col">Name</th>
-      <th scope="col">Score</th>
+      <th scope="col">Wallet</th>
     </tr>
   </thead>
   <tbody>
@@ -96,7 +107,10 @@
     </tr>
   </tbody>
 </table>
+
 </div>
 </div>
+
+
 </body>
 </html> 
