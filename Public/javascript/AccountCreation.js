@@ -34,8 +34,9 @@ $(document).ready(function(){
                 }
                 */
 
-                var pass = data.pass;
-                if(data.pass === "true"){
+                var pass = data.success;
+                
+                if(pass === 'true'){
                     window.location.href = '/LoginPage';
                 }
                 else{

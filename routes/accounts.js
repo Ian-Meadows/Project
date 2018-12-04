@@ -38,21 +38,13 @@ app.get('/', function(req, res){
                 res.json({ success: 'true' });
                 console.log("success");
 
-                var c = {
-                       //TODO:Use an actual cookie
-                    pass:"true"
-                };
-
-                res.status(200)
-                    .json(c)
-                    .end();
-
 
                 //response.render()
             }).catch(function (err) {
                 req.flash('error', err);
                 //response.render()
                 console.log("catch");
+                console.log(err);
             })
     }else{
         console.log('error!!');
