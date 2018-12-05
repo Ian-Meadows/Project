@@ -22,15 +22,12 @@ $(document).ready(function(){
 				url:'/CreateGroup',
 				data:req
 			}).done(function(data) {
-				/*
-  				document.cookie = data.cookie;
-    			if(document.cookie === "true"){
-    				window.location.href = '/AfterLoginPage';
-    			} 
-    			else{
-    				document.getElementById("PasswordInput").value = "";
-    			}
-    			*/
+				if(data.message === "true"){
+					window.location.href = "/GroupList";
+				}
+				else{
+					alert("failed to create group");
+				}
 			});
 		}
 

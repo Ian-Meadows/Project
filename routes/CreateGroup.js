@@ -40,39 +40,57 @@ app.get('/', function(req, res){
 
 											db.none(insertUserGroup, [groupID, userID])
 											    .then(function(result){
-											    	console.log('check usergroup table!!')
+											    	console.log('check usergroup table!!');
+											    	SendBackMessage(res, "true");
+
 
 											    }).catch(function(err){
-											    	console.log('failed insert to usergroup')
+											    	console.log('failed insert to usergroup');
+											    	SendBackMessage(res, "false");
 											});
 
 										}).catch(function(err){
-											console.log('error getting group id')
+											console.log('error getting group id');
+											SendBackMessage(res, "false");
 									});
 
 								}).catch(function(err){
-								            console.log(err)
-								            console.log('error on group insert')
+								    console.log(err);
+								    console.log('error on group insert');
+								    SendBackMessage(res, "false");
 							});
 						}
 
 						
 
 					}).catch(function(result){
-						console.log('getting group name failed!')
+						console.log('getting group name failed!');
+						SendBackMessage(res, "false");
 					})
 				
 				
 
 			}).catch(function(err){
-				console.log(err)
-				console.log('error getting user id')
+				console.log(err);
+				console.log('error getting user id');
+				SendBackMessage(res, "false");
 		});
 			
 
 	}else{
 		console.log('error!! or just missing the group name');
+		SendBackMessage(res, "false");
 	}
 
 });
+
+function SendBackMessage(res, str){
+	var jmessage = {
+		message:str
+	};
+
+	res.status(200)
+		.json(jmessage)
+		.end();
+}
 
