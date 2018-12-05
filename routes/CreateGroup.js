@@ -7,7 +7,7 @@ var db = require('../database/Database');
 app.get('/', function(req, res){
 
 	var groupInfo = req.query;//                 1      2           3           4        5      6        7       8        9          10
-	var insertGroup = 'insert into grouptable(name, description, password, groupowner, poll, option1, option2, betson1, betson2, pollstatus) values($1, $2, $3, $4, $5, $6, $7, 0, 0, $8);';
+	var insertGroup = 'insert into grouptable(name, description, password, groupowner, poll, option1, option2, pollson1, pollson2,betson1, betson2, pollstatus) values($1, $2, $3, $4, $5, $6, $7, 0, 0, 0, 0, $8);';
 	var insertUserGroup = 'insert into usergroup(groupid, userid) values($1, $2);';
 	var checkExisitingGroup = 'select name from grouptable where name=$1;'
 	var userID;

@@ -18,6 +18,8 @@ CREATE TABLE IF NOT EXISTS GroupTable(
 	Poll varchar(255) NOT NULL,
 	Option1 varchar(32) NOT NULL,
 	Option2 varchar(32) NOT NULL,
+	pollsOn1 int NOT NULL,
+	pollsOn2 int NOT NULL,
 	betsOn1 int NOT NULL,
 	betsOn2 int NOT NULL,
 	pollStatus varchar(32) NOT NULL,
