@@ -1,0 +1,33 @@
+TODO
+J = Jacob, I = Ian, M = Mengyu, C = Siyu, S = Scott
+Mark each completed section with a X to show it is complete
+
+[!] Everyone needs to be set up with git on the COMMAND LINE
+[!] Everyone needs a working implementation of the website and database
+[ ] 
+[J] Save NFL game data to database
+[J] Get API to get O/U
+[ ] 
+[J,I] Redesign home page to show data -> use Ian's javascript to create tables (see view group page)
+[ ] Home page should pull data from database only
+[I] Table should only show information for the current user
+[I] Add buttons to each row to bet on specific games
+[S] Bet buttons should open a new page to accept a bet
+[ ] Bet should only be accepted if the total bets for a user is + attempted bet is <= wallet amount
+[ ] Only allow bets to occur BEFORE a game starts
+[ ] 
+[M] Remove profile pic upload from profile page
+[C] Change landing page background to showcase logo, use other websites for inspiration
+[C] Add information about the site to the landing page
+[C] Fix the transparent box on the account creation page to cover the inputs and links
+[S] Fix all broken links
+[S] Remove the view bets button
+
+
+
+
+TO DO LATER
+[ ] Make group list page look nice
+[ ] Add links to group pages
+[ ] Group page should contain all of the column in the database of information
+[ ] Group page will show users in the group with their current bets
