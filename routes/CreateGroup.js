@@ -60,6 +60,10 @@ app.get('/', function(req, res){
 								    SendBackMessage(res, "false");
 							});
 						}
+						else{
+							//group exists
+							SendBackMessage(res, "false");
+						}
 
 						
 

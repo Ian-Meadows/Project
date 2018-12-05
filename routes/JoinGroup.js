@@ -15,24 +15,64 @@ app.get('/', function(req, res){
     
     var groupName = groupInfo.groupName;
     var password = groupInfo.password;
+    var username = groupInfo.username;
+    var userID;
+    var groupID;
+
 
     //TODO:Check if Group Exists
-    var query1 = '';
-
+    var query1 = 'SELECT * FROM grouptable WHERE name=$1';
+    var insertUserGroup = 'insert into usergroup(groupid, userid) values($1, $2);';
     //TODO: insert into database
-    var query2 = '';
-
-    db.one(query1)
+    var checkIfUserExists = 'SELECT * FROM users WHERE username=$1';
+    db.any(checkIfUserExists, username)
         .then(function(data){
-            //group exists
+            if(data.length == 1){
+                userID = data[0].id;
+                db.any(query1, groupName)
+                    .then(function(data){
+                        
+                        if(data.length == 1){
+                            var groupInfo = data[0];
+                            if(groupInfo.password === "" || groupInfo.password === password){
+                                groupID = groupInfo.id;
+                                //can now join group
+                                //need to check if already in group
+                                db.none(insertUserGroup, [groupID, userID])
+                                    .then(function(result){
+                                        console.log('Joined Group');
+                                        SendBackMessage(res, "true");
+
+
+                                    }).catch(function(err){
+                                        console.log('failed insert to usergroup');
+                                        SendBackMessage(res, "false");
+                                });
+                            }
+                            else{
+                                //failed to join
+                                SendBackMessage(res, "false");
+                            }
+                        }
+                        else{
+                            //error
+                            SendBackMessage(res, "false");
+                        }
+
+                    })
+                    .catch(function(err){
+                        SendBackMessage(res, "false");
+                        
+                });
+            }
+            else{
+                //fail
+            }
         })
         .catch(function(err){
-            //group does not exist
-            db.none(query2)
-                .then(function(data){
+            SendBackMessage(res, "false");
+    });
 
-                });
-        })
 
         /*
     console.log(query);
@@ -54,3 +94,14 @@ app.get('/', function(req, res){
     }
     */
 });
+
+
+function SendBackMessage(res, str){
+    var jmessage = {
+        message:str
+    };
+
+    res.status(200)
+        .json(jmessage)
+        .end();
+}
