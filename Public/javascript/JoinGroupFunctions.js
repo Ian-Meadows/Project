@@ -20,12 +20,11 @@ $(document).ready(function(){
 			url:'/JoinGroup',
 			data:req
 		}).done(function(data) {
-			alert(data.message);
     		if(data.message === "true"){
     			window.location.href = '/GroupList';
     		} 
     		else{
-    			alert("Failed to join group");
+    			alert(data.message);
     			document.getElementById("GroupPassword").value = "";
     		}
 		});

@@ -46,30 +46,30 @@ app.get('/', function(req, res){
 
 											    }).catch(function(err){
 											    	console.log('failed insert to usergroup');
-											    	SendBackMessage(res, "false");
+											    	SendBackMessage(res, "failed to create group");
 											});
 
 										}).catch(function(err){
 											console.log('error getting group id');
-											SendBackMessage(res, "false");
+											SendBackMessage(res, "failed to create group");
 									});
 
 								}).catch(function(err){
 								    console.log(err);
 								    console.log('error on group insert');
-								    SendBackMessage(res, "false");
+								    SendBackMessage(res, "failed to create group");
 							});
 						}
 						else{
 							//group exists
-							SendBackMessage(res, "false");
+							SendBackMessage(res, "group already exists");
 						}
 
 						
 
 					}).catch(function(result){
 						console.log('getting group name failed!');
-						SendBackMessage(res, "false");
+						SendBackMessage(res, "failed to create group");
 					})
 				
 				
@@ -77,13 +77,13 @@ app.get('/', function(req, res){
 			}).catch(function(err){
 				console.log(err);
 				console.log('error getting user id');
-				SendBackMessage(res, "false");
+				SendBackMessage(res, "failed to create group");
 		});
 			
 
 	}else{
 		console.log('error!! or just missing the group name');
-		SendBackMessage(res, "false");
+		SendBackMessage(res, "Stop hacking plz. could be us tho");
 	}
 
 });

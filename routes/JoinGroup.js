@@ -25,10 +25,14 @@ app.get('/', function(req, res){
     var insertUserGroup = 'insert into usergroup(groupid, userid) values($1, $2);';
     //TODO: insert into database
     var checkIfUserExists = 'SELECT * FROM users WHERE username=$1';
+
+    var checkIfUserAlreadyInGroup = 'SELECT * FROM usergroup WHERE userid=$1 AND groupid=$2';
+    //get user
     db.any(checkIfUserExists, username)
         .then(function(data){
             if(data.length == 1){
                 userID = data[0].id;
+                //get group
                 db.any(query1, groupName)
                     .then(function(data){
                         
@@ -36,41 +40,55 @@ app.get('/', function(req, res){
                             var groupInfo = data[0];
                             if(groupInfo.password === "" || groupInfo.password === password){
                                 groupID = groupInfo.id;
-                                //can now join group
-                                //need to check if already in group
-                                db.none(insertUserGroup, [groupID, userID])
-                                    .then(function(result){
-                                        console.log('Joined Group');
-                                        SendBackMessage(res, "true");
+                                db.any(checkIfUserAlreadyInGroup, [userID, groupID])
+                                    .then(function(data){
+                                        if(data.length == 0){
+                                            //can now join group
+                                            //need to check if already in group
+                                            //insert into group
+                                            db.none(insertUserGroup, [groupID, userID])
+                                                .then(function(result){
+                                                    console.log('Joined Group');
+                                                    SendBackMessage(res, "true");
 
 
-                                    }).catch(function(err){
-                                        console.log('failed insert to usergroup');
-                                        SendBackMessage(res, "false");
+                                                }).catch(function(err){
+                                                    console.log('failed insert to usergroup');
+                                                    SendBackMessage(res, "failed to join group");
+                                            });
+                                        }
+                                        else{
+                                            SendBackMessage(res, "Already in group");
+                                        }
+                                    })
+                                    .catch(function(data){
+                                        SendBackMessage(res, "failed to join group");
                                 });
+                                
                             }
                             else{
                                 //failed to join
-                                SendBackMessage(res, "false");
+                                SendBackMessage(res, "Incorrect password or group name");
                             }
                         }
                         else{
                             //error
-                            SendBackMessage(res, "false");
+                            SendBackMessage(res, "Group does not exist");
                         }
 
                     })
                     .catch(function(err){
-                        SendBackMessage(res, "false");
+                        SendBackMessage(res, "failed to join group");
                         
                 });
             }
             else{
                 //fail
+                SendBackMessage(res, "Please stop messing with the cookie.\n might be us tho");
             }
         })
         .catch(function(err){
-            SendBackMessage(res, "false");
+            SendBackMessage(res, "failed to join group");
     });
 
 

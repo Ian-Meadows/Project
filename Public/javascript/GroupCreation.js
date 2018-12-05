@@ -26,7 +26,7 @@ $(document).ready(function(){
 					window.location.href = "/GroupList";
 				}
 				else{
-					alert("failed to create group");
+					alert(data.message);
 				}
 			});
 		}
