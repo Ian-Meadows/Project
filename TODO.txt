@@ -8,7 +8,7 @@ Mark each completed section with a X to show it is complete
 [J] Save NFL game data to database
 [J] Get API to get O/U
 [ ] 
-[J,I] Redesign home page to show data -> use Ian's javascript to create tables (see view group page)
+[J,I] Redesign after login page to show data -> use Ian's javascript to create tables (see view group page)
 [ ] Home page should pull data from database only
 [I] Table should only show information for the current user
 [I] Add buttons to each row to bet on specific games
