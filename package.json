@@ -20,5 +20,16 @@
     "start": "node server.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ian-Meadows/Project.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Ian-Meadows/Project/issues"
+  },
+  "homepage": "https://github.com/Ian-Meadows/Project#readme",
+  "engines": {
+    "node": "11.3"
+  }
 }

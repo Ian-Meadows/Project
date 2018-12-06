@@ -131,9 +131,11 @@ app.use('/GetUserData', GetUserData);
 app.use('/UpdateUser', UpdateUser);
 app.use('/MakeBet', MakeBet);
 
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 4000;
+}
 
-//var port = 4000;
-var port = process.env.PORT;
 app.listen(port, function () {
     console.log('Server running on http://localhost:' + port)
 });
