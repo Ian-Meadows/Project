@@ -2,7 +2,7 @@
   "name": "project",
   "version": "1.0.0",
   "description": "For the Project",
-  "main": "server.js",
+  "main": "PageHandler.js",
   "dependencies": {
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.3",
