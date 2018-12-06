@@ -28,6 +28,10 @@ app.get('/Insert', function(req, res){
 						}
 					}
 					if(exists){
+						if(games[i].q === 'F' || games[i].q === 'FO'){
+							GameFinished(res, games[i].gsis);
+							games[i].q = 'D';
+						}
 						var updateGame = 'UPDATE game SET homescore=$2, visitorscore=$3, status=$4 WHERE id=$1;';
 						db.none(updateGame, [games[i].gsis, games[i].hs, games[i].vs, games[i].q])
 							.then(function(data){
@@ -54,6 +58,10 @@ app.get('/Insert', function(req, res){
 			}
 			else{
 				for(var i = 0; i < games.length; i++){
+					if(games[i].q === 'F' || games[i].q === 'FO'){
+						GameFinished(res, games[i].gsis);
+						games[i].q = 'D';
+					}
 					var updateGame = 'UPDATE game SET homescore=$2, visitorscore=$3, status=$4 WHERE id=$1;';
 					db.none(updateGame, [games[i].gsis, games[i].hs, games[i].vs, games[i].q])
 						.then(function(data){
@@ -93,6 +101,85 @@ app.get('/Get', function(req, res){
 });
 
 
+function GameFinished(res, gameID){
+
+	var gameID = msg.gsis;
+
+	var getGame = 'SELECT * FROM game WHERE id=$1;';
+
+	var homeTeam = "";
+	var awayTeam = "";
+
+	var winningTeam = "";
+
+	var winningBets = 0;
+
+	console.log("GamesUpdating");
+
+	var jackpot = 0;
+
+	db.any(getGame, gameID)
+		.then(function(data){
+			if(data.length == 1){
+				//set team names
+				if(data[0].homescore > data[0].visitorscore){
+					winningTeam = data[0].home;
+				}
+				else{
+					winningTeam = data[0].visitor;
+				}
+
+				var getBets = 'SELECT * FROM bets WHERE gameid=$1;';
+				db.any(getBets, data[0].id)
+					.then(function(data){
+						//get total jackpot
+						//setup side bets
+						for(var i = 0; i < data.length; i++){
+							jackpot+=data[i].bet;
+							if(winningTeam === data[i].team){
+								winningBets+=data[i].bet;
+							}
+
+						}
+
+						//update user funds
+						for(var i = 0; i < data.length; i++){
+							if(data[i].team == winningTeam){
+								var percent = data[i].bet / winningBets;
+								var totalWon = jackpot*percent;
+								UpdateUserFund(data[i].userid, totalWon);
+							}
+							
+						}
+
+					})
+					.catch(function(err){
+						console.log(err);
+					});
+			}
+			else{
+				console.log("ERROR: group does not exist");
+			}
+			
+		})
+		.catch(function(err){
+			console.log(err);
+	});
+
+}
+
+function UpdateUserFund(userID, fundsToAdd){
+
+	var updateUser = 'UPDATE users SET Funds=$2 WHERE id=$1;';
+	db.any(updateUser, [userID, fundsToAdd])
+		.then(function(data){
+			console.log("funds added");
+		})
+		.catch(function(err){
+			console.log(err);
+	});
+
+}
 
 
 function SendBackMessage(res, msg){
