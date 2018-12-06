@@ -2,7 +2,7 @@
   "name": "project",
   "version": "1.0.0",
   "description": "For the Project",
-  "main": "PageHandler.js",
+  "main": "index.js",
   "dependencies": {
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.3",
@@ -18,18 +18,5 @@
   "devDependencies": {},
   "scripts": {
     "start": "node server.js"
-  },
-  "author": "",
-  "license": "ISC",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Ian-Meadows/Project.git"
-  },
-  "bugs": {
-    "url": "https://github.com/Ian-Meadows/Project/issues"
-  },
-  "homepage": "https://github.com/Ian-Meadows/Project#readme",
-  "engines": {
-    "node": "11.3"
   }
 }
