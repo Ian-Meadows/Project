@@ -15,8 +15,8 @@ CREATE TABLE IF NOT EXISTS Game(
 	HomeScore int,
 	Visitor varchar(55),
 	VisitorScore int,
-	Description varchar(255),
 	StartDate DATE,
+	DayOfWeek varchar(3),
 	Status varchar(20),
 	PRIMARY KEY(ID)
 
@@ -24,8 +24,8 @@ CREATE TABLE IF NOT EXISTS Game(
 
 CREATE TABLE IF NOT EXISTS GroupTable(
 
-	ID int NOT NULL UNIQUE,
-	Name varchar(55),
+	ID serial NOT NULL,
+	Name varchar(55) NOT NULL,
 	Description varchar(255),
 	Password varchar(255),
 	Max_Members int,
@@ -55,8 +55,7 @@ CREATE TABLE IF NOT EXISTS Bets(
 
 CREATE TABLE IF NOT EXISTS UserGroup(
 	UserID int,
-	GroupID int PRIMARY KEY,
-
+	GroupID int,
 
 	foreign key(UserID) references Users(ID),
 	foreign key(GroupID) references GroupTable(ID)

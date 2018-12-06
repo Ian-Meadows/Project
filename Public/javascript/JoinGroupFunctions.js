@@ -1,16 +1,17 @@
 $(document).ready(function(){
 
 	document.getElementById("JoinGroup").onclick = function(){
+
+		var groupPassword = "";
+
 		var groupName = document.getElementById("GroupName").value;
-    	var groupPassword = document.getElementById("GroupPassword").value;
+    	groupPassword = document.getElementById("GroupPassword").value;
 
     	var req = {
-    		groupName:'groupName',
-    		password:'password'
+    		groupName:groupName,
+    		password:groupPassword,
+    		username:document.cookie
     	};
-
-    	req.groupName = groupName;
-		req.password = groupPassword;
 
 
 
@@ -19,11 +20,11 @@ $(document).ready(function(){
 			url:'/JoinGroup',
 			data:req
 		}).done(function(data) {
-			alert(data.response);
-    		if(data.response === "true"){
-    			window.location.href = '/GroupPage';
+    		if(data.message === "true"){
+    			window.location.href = '/GroupList';
     		} 
     		else{
+    			alert(data.message);
     			document.getElementById("GroupPassword").value = "";
     		}
 		});
