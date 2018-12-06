@@ -8,18 +8,21 @@ $(document).ready(function(){
 	var emailInput = document.getElementById("emailInput");
 	var passwordInput = document.getElementById("passwordInput");
 
+	var fundsPara = document.getElementById("funds");
+
 	var userData;
 
 	$.ajax({
 			url:'/GetUserData',
 			data:req
 		}).done(function(data) {
-			if(data.success == "true"){
+			if(data.success === "true"){
 				userData = data.message;
   				console.log(data);
 
   				userInput.value = userData[0].username;
   				emailInput.value = userData[0].email;
+  				fundsPara.innerHTML = "Funds: " + userData[0].funds;
 
 			}
 			else{
