@@ -20,14 +20,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Ian-Meadows/Project.git"
-  },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Ian-Meadows/Project/issues"
-  },
-  "homepage": "https://github.com/Ian-Meadows/Project#readme"
 }
