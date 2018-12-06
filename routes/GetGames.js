@@ -22,7 +22,7 @@ app.get('/', function(req, res){
 				if(data.length == 0){
 					//game does not exist so insert Game
 					var insertGame = 'INSERT INTO game(id, home, homescore ,visitor, visitorscore, startdate, dayofweek, status) values($1, $2, $3, $4, $5, $6, $7, $8);';
-					db.none(insertGame, [games[i].gsis, games[i].hnn, games[i].hs, games[i].vnn, games[i].vs, games[i].eid, games[i].d, games[i].q)
+					db.none(insertGame, [games[i].gsis, games[i].hnn, games[i].hs, games[i].vnn, games[i].vs, games[i].eid, games[i].d, games[i].q])
 						.then(function(data){
 							console.log('inserted game');
 						})
