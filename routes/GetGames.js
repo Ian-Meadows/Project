@@ -5,7 +5,7 @@ var app = express();
 module.exports = app;
 var db = require('../database/Database');
 
-app.get('/', function(req, res){
+app.get('/Insert', function(req, res){
 
 	var info = req.query;
 
@@ -49,11 +49,16 @@ app.get('/', function(req, res){
 	}
 
 
-	//get games that are upcoming and send it
+
+});
+
+app.get('/Insert', function(req, res){
 
 
 
 });
+
+
 
 
 function SendBackMessage(res, str){
