@@ -11,7 +11,7 @@ $(document).ready(function(){
             Bets:bet
         };
 
-        console.log("FAK")
+        console.log("FAK");
 
         $.ajax({
             url:'/MakeBet',
@@ -26,7 +26,6 @@ $(document).ready(function(){
                 document.getElementById("PasswordInput").value = "";
             }
             */
-
             
         });
 
