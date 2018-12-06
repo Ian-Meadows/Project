@@ -65,7 +65,7 @@ app.get('/Insert', function(req, res){
 					var updateGame = 'UPDATE game SET homescore=$2, visitorscore=$3, status=$4 WHERE id=$1;';
 					db.none(updateGame, [games[i].gsis, games[i].hs, games[i].vs, games[i].q])
 						.then(function(data){
-							console.log('updated game');
+							//console.log('updated game');
 						})
 						.catch(function(err){
 							console.log(err);
