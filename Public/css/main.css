@@ -1,4 +1,10 @@
-h1 {
-    color: green;
-    text-align: center;
+.placeholder{
+	text-align: center;
+	color: white;
+}
+h1{
+	color: white;
+}
+h2{
+	color: white;
 }
