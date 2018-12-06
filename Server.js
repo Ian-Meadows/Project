@@ -116,6 +116,7 @@ var JoinGroup = require('./routes/JoinGroup');
 var Login = require('./routes/Login');
 var GetGroups = require('./routes/GetGroups');
 var GetGames = require('./routes/GetGames');
+var GetUserData = require('./routes/GetUserData');
 
 app.use('/', PageHandler);
 app.use('/CreateAccount', CreateAccount);
@@ -124,6 +125,7 @@ app.use('/JoinGroup', JoinGroup);
 app.use('/Login', Login);
 app.use('/GetGroups', GetGroups);
 app.use('/GetGames', GetGames);
+app.use('/GetUserData', GetUserData);
 
 
 var port = 4000;
