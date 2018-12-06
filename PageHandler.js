@@ -3,7 +3,7 @@ var app = express();
 
 app.get('/', function(req, res){
     //res.writeHeader(200, {"Content-Type":"text/html"});
-    res.sendFile('/Public/html/LandingPage.html');
+    res.sendFile(__dirname + '/Public/html/LandingPage.html');
     //res.sendFile('javascript/ClientSide/ConnectionTest.js');
     //res.end();
 });
