@@ -29,9 +29,11 @@
       });
 
       console.log(vars)
+      console.log('Hello!')
+      console.log(vars.id)
       
       window.onload = function() {
-        //document.getElementById("id").innerHTML=vars['id'];
+        document.getElementById("gameid").innerHTML=vars.id.toString();
         document.getElementById("home").innerHTML=vars['home'];
         document.getElementById("visitor").innerHTML=vars['visitor'];
       } 
@@ -63,6 +65,8 @@
                 <option value="1" id="visitor"></option>
             </select>
           </div>
+
+          <div><input type="hidden" name="gameid"></div>>
 
           <br><br>
           <button type="submit" class="btn btn-success" id="BetButton">Submit</button>
