@@ -3,15 +3,15 @@ function buildHtmlTable(selector) {
       var games;
       var gameData;
       var scoreColor;
-      var url = 'http://www.nfl.com/liveupdate/scorestrip/ss.json';
       
-      $.getJSON(url, function( data ) {
-        games = data.gms;
+      $.ajax('/GetGames/Get', function(data) {
 
-        // Get data from database and get the data from the bets table
-
+       }).done(function(data){
+                
+        var games = data.message;
         var row$ = $('<tr>');
         var headerTr$ = $('<tr/>');
+        var cellValue;
 
         // Set the column names, add to the table, selector
         headerTr$.append($('<th/>').html('Date'));
@@ -22,11 +22,9 @@ function buildHtmlTable(selector) {
         headerTr$.append($('<th/>').html('Status'));
         headerTr$.append($('<th/>').html('Bet'));
 
-
         $(selector).append(headerTr$);
 
-        var cellValue;
-
+        
 
         // Gets scores and team names for each game and add to a table in the database
         for (var i = 0; i < games.length; i++) {
@@ -34,49 +32,49 @@ function buildHtmlTable(selector) {
           // Adjusts the color of the row depending on the game status
           row$ = $('<tr>');
 
-          scoreColor = getScoreColor(games[i].hs, games[i].vs)
+          scoreColor = getScoreColor(games[i].home, games[i].vs)
 
           // Game date 
-          cellValue = games[i].eid;
+          cellValue = games[i].dayofweek;
           if(cellValue== null) cellValue = "";
           row$.append($('<td/>').html(cellValue));
 
           // Home team name
-          cellValue = games[i].hnn;
+          cellValue = games[i].home;
           if (cellValue == null) cellValue = "";
           row$.append($('<td/>').html(cellValue));
 
           // Home team score
-          cellValue = games[i].hs;
+          cellValue = games[i].homescore;
           if (cellValue == null) cellValue = "";
           row$.append($(scoreColor[0]).html(cellValue));
 
           // Visitor team name
-          cellValue = games[i].vnn;
+          cellValue = games[i].visitor;
           if (cellValue == null) cellValue = "";
           row$.append($('<td/>').html(cellValue));
 
           // Visitor team score
-          cellValue = games[i].vs;
+          cellValue = games[i].visitorscore;
           if (cellValue == null) cellValue = "";
           row$.append($(scoreColor[1]).html(cellValue));
 
           // Game status
-          cellValue = getStatus(games[i].q);
+          cellValue = getStatus(games[i].status);
           if (cellValue == null) cellValue = "";
-          row$.append($(getStatusColor(games[i].q)).html(cellValue));
+          row$.append($(getStatusColor(games[i].status)).html(cellValue));
 
-          cellValue = '<button type="button">Bet</button>';
+          cellValue = '<form action=\"MakeBet\" method=\"post\"><input type="hidden" name=\'id\' value = '+games[i].id+'><input type="hidden" name=\"home\" value = '+games[i].home+'><input type="hidden" name=\"visitor\" value = '+games[i].visitor+'><input type="submit" name=\"bet\" value=\"Bet\" /></form>';
           row$.append($('<td/>').html(cellValue));
-
-
 
           // Add the row data to the table
           $(selector).append(row$);
         }
 
-       }); 
-      }
+       });
+
+
+}
 
 
 

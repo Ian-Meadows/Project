@@ -34,6 +34,10 @@ app.get('/GroupList', function(req, res){
     res.sendFile(__dirname + '/Public/html/GroupList.html');
 });
 
+app.get('/MakeBet', function(req, res){
+    res.sendFile(__dirname + '/Public/html/MakeBet.html');
+});
+
 app.get('/', function(req, res){
     //res.writeHeader(200, {"Content-Type":"text/html"});
     res.sendFile(__dirname + '/Public/html/LandingPage.html');

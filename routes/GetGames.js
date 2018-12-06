@@ -97,7 +97,7 @@ app.get('/Get', function(req, res){
 
 function SendBackMessage(res, msg){
 	var jmessage = {
-		message:str
+		message:msg
 	};
 
 	res.status(200)
