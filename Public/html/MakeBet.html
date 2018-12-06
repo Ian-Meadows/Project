@@ -12,14 +12,34 @@
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
     <script src="http://code.jquery.com/jquery-2.2.0.js"></script>
 
     <script src="../javascript/Logout.js"></script>
+    <script src="../javascript/GetBet.js"></script>
     
-    <title>Availble Games</title>
+    <script type="text/javascript">
+
+      var vars = {};
+      var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+      });
+
+      console.log(vars)
+      
+      window.onload = function() {
+        //document.getElementById("id").innerHTML=vars['id'];
+        document.getElementById("home").innerHTML=vars['home'];
+        document.getElementById("visitor").innerHTML=vars['visitor'];
+      } 
+
+
+    </script>
+
+    <title>Available Games</title>
 
   </head>
 
@@ -27,25 +47,25 @@
     <br><br><br><br><br>
     <h2 align = "center">Make Bet</h2><br>
 
-    <form class="make-bet text-center">
+    <form action="/MakeBet" method="get" id="BetCreation" align="center">
 
           <br>
           <div class="make-bet">
-            <input type="number" step="1" class="input-box" id="MakeBet" placeholder="Enter Bet (whole number)">
+            <input type="number" step="1" min="1" class="input-box" id="Bet" placeholder="Enter Bet (whole number)" style="width: 210px">
           </div>
 
           <br><br>
 
-          <div class="make-bet" id="GroupUsers">
-            <select class="custom-select custom-select-sm" style="width: 180px">
+          <div class="make-bet" id="TeamName">
+            <select class="custom-select custom-select-sm" style="width: 210px">
                 <option selected>Select Team</option>
-                <option value="5">Home</option>
-                <option value="10">Visitor</option>
+                <option value="5" id="home"></option>
+                <option value="10" id="visitor"></option>
             </select>
           </div>
-          <br><br>
-          <button class="btn btn-success" id="CreationButton">Submit</button>
 
-        </form>  
+          <br><br>
+          <button type="submit" class="btn btn-success" id="BetButton">Submit</button>
+    </form>  
   </body>
 </html>

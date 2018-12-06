@@ -64,7 +64,7 @@ function buildHtmlTable(selector) {
           if (cellValue == null) cellValue = "";
           row$.append($(getStatusColor(games[i].status)).html(cellValue));
 
-          cellValue = '<form action=\"MakeBet\" method=\"post\"><input type="hidden" name=\'id\' value = '+games[i].id+'><input type="hidden" name=\"home\" value = '+games[i].home+'><input type="hidden" name=\"visitor\" value = '+games[i].visitor+'><input type="submit" name=\"bet\" value=\"Bet\" /></form>';
+          cellValue = '<form action=\"MakeBet\" method=\"get\"><input type="hidden" name=\'id\' value = '+games[i].id+'><input type="hidden" name=\"home\" value = '+games[i].home+'><input type="hidden" name=\"visitor\" value = '+games[i].visitor+'><input type="submit" name=\"bet\" value=\"Bet\" /></form>';
           row$.append($('<td/>').html(cellValue));
 
           // Add the row data to the table

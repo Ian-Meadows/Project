@@ -31,7 +31,7 @@ app.get('/Insert', function(req, res){
 						var updateGame = 'UPDATE game SET homescore=$2, visitorscore=$3, status=$4 WHERE id=$1;';
 						db.none(updateGame, [games[i].gsis, games[i].hs, games[i].vs, games[i].q])
 							.then(function(data){
-								console.log('updated game');
+								//console.log('updated game');
 							})
 							.catch(function(err){
 								console.log(err);
@@ -41,7 +41,7 @@ app.get('/Insert', function(req, res){
 						var insertGame = 'INSERT INTO game(id, home, homescore ,visitor, visitorscore, startdate, dayofweek, status) values($1, $2, $3, $4, $5, $6, $7, $8);';
 						db.none(insertGame, [games[i].gsis, games[i].hnn, games[i].hs, games[i].vnn, games[i].vs, games[i].eid.substring(0, games[i].eid.length - 2), games[i].d, games[i].q])
 							.then(function(data){
-								console.log('inserted game');
+								//console.log('inserted game');
 							})
 							.catch(function(err){
 								console.log(err);
