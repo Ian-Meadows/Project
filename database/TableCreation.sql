@@ -15,8 +15,8 @@ CREATE TABLE IF NOT EXISTS Game(
 	HomeScore int,
 	Visitor varchar(55),
 	VisitorScore int,
-	Description varchar(255),
 	StartDate DATE,
+	DayOfWeek varchar(3),
 	Status varchar(20),
 	PRIMARY KEY(ID)
 
