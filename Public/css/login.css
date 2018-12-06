@@ -22,3 +22,9 @@ input {
 a:hover{
 	color: grey;
 }
+
+.footer{
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+}
