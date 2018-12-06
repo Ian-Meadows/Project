@@ -170,7 +170,7 @@ function GameFinished(res, gameID){
 
 function UpdateUserFund(userID, fundsToAdd){
 
-	var updateUser = 'UPDATE users SET Funds=$2 WHERE id=$1;';
+	var updateUser = 'UPDATE users SET funds=funds+$2 WHERE id=$1;';
 	db.any(updateUser, [userID, fundsToAdd])
 		.then(function(data){
 			console.log("funds added");
