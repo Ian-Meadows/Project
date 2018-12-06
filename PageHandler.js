@@ -1,6 +1,13 @@
 var express = require('express');
 var app = express();
 
+app.get('/', function(req, res){
+    //res.writeHeader(200, {"Content-Type":"text/html"});
+    res.sendFile('/Public/html/LandingPage.html');
+    //res.sendFile('javascript/ClientSide/ConnectionTest.js');
+    //res.end();
+});
+
 
 app.get('/GroupJoinPage', function(req, res){
     res.sendFile(__dirname + '/Public/html/GroupJoinPage.html');
@@ -38,12 +45,7 @@ app.get('/MakeBetPage', function(req, res){
     res.sendFile(__dirname + '/Public/html/MakeBetPage.html');
 });
 
-app.get('/', function(req, res){
-    //res.writeHeader(200, {"Content-Type":"text/html"});
-    res.sendFile(__dirname + '/Public/html/LandingPage.html');
-    //res.sendFile('javascript/ClientSide/ConnectionTest.js');
-    //res.end();
-});
+
 
 module.exports = app;
 
