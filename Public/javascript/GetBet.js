@@ -11,7 +11,8 @@ $(document).ready(function(){
             Bets:bet
         };
 
-        console.log("FAK")
+        console.log(team)
+        console.log(bet)
 
         $.ajax({
             url:'/MakeBet',
