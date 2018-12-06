@@ -132,7 +132,8 @@ app.use('/UpdateUser', UpdateUser);
 app.use('/MakeBet', MakeBet);
 
 
-var port = 4000;
+//var port = 4000;
+var​ port = process.env.PORT;
 app.listen(port, function () {
     console.log('Server running on http://localhost:' + port)
 });
