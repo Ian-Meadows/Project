@@ -11,7 +11,7 @@ $(document).ready(function(){
 		};
 
 		$.ajax({
-			url:'/GetGames',
+			url:'/GetGames/Insert',
 			data:req
 		}).done(function(data) {
   			console.log(data);
