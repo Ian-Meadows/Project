@@ -34,8 +34,8 @@ app.get('/GroupList', function(req, res){
     res.sendFile(__dirname + '/Public/html/GroupList.html');
 });
 
-app.get('/MakeBet', function(req, res){
-    res.sendFile(__dirname + '/Public/html/MakeBet.html');
+app.get('/MakeBetPage', function(req, res){
+    res.sendFile(__dirname + '/Public/html/MakeBetPage.html');
 });
 
 app.get('/', function(req, res){
