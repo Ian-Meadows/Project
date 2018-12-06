@@ -26,6 +26,8 @@ $(document).ready(function(){
                 document.getElementById("PasswordInput").value = "";
             }
             */
+
+            console.log(data)
             
         });
 
