@@ -11,8 +11,12 @@
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script src="../javascript/UpdateProfile.js"></script>
+
 </head>
 <body>
       <nav class="navigation-header"></nav>
@@ -47,7 +51,7 @@
         <div class="form-group row">
             <label for="UserNamer" class="col-4 col-form-label"><h3>UserNamer</h3></label> 
               <div class="col-8">
-                <input name="UserNamer" placeholder="UserNamer" class="form-control here" required="required" type="text">
+                <input name="UserNamer" placeholder="UserNamer" class="form-control here" required="required" type="text" id="usernameInput">
               </div>
         </div>
       </div>
@@ -57,7 +61,7 @@
       <div class="form-group row">
                                 <label for="Password" class="col-4 col-form-label"><h3>Password</h3></label> 
                                 <div class="col-8">
-                                  <input name="Password" placeholder="Password" class="form-control here" required="required" type="text">
+                                  <input name="Password" placeholder="Password" class="form-control here" required="required" type="text" id="passwordInput">
                                 </div>
                               </div>
                             </div>
@@ -66,13 +70,13 @@
       <div class="form-group row">
             <label for="Email" class="col-4 col-form-label"><h3>Email</h3></label> 
                   <div class="col-8">
-                  <input name="Email" placeholder="Email" class="form-control here" required="required" type="text">
+                  <input name="Email" placeholder="Email" class="form-control here" required="required" type="text" id="emailInput">
                   </div>
             </div>
             <br><br>
       <div class="form-group row">
             <div class="offset-4 col-8">
-                <button name="submit" type="submit" class="btn btn-primary">Update My Profile</button>
+                <button name="submit" type="submit" class="btn btn-primary" id="UpdateUser">Update My Profile</button>
             </div>
       </div>
     </div>
