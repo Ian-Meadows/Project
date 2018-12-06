@@ -8,5 +8,6 @@ var pgp = require('pg-promise')();
                 // Use empty string if you did not set a password
 };*/
 var dbConfig = process.env.DATABASE_URL;
+console.log(dbConfig)
 var db = pgp(dbConfig);
 module.exports = db;
