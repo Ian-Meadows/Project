@@ -44,13 +44,13 @@ CREATE TABLE IF NOT EXISTS Bets(
 	UserID int PRIMARY KEY,
 	GameID int,
 	GroupID int,
+	Team varchar(20),
+	Bet int,
 
 	foreign key(UserID) references Users(ID),
 	foreign key(GameID) references Game(ID),
-	Bet int,
 	foreign key(GroupID) references GroupTable(ID)
 );
-
 
 
 CREATE TABLE IF NOT EXISTS UserGroup(
