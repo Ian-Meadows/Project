@@ -2,17 +2,26 @@ $(document).ready(function(){
 
     document.getElementById("BetButton").onclick = function(){
 
-
+        var gameID = vars['id'];
         var team = document.getElementById("TeamName").value;
         var bet = document.getElementById("Bet").value;
+        if(!(team === "1" || team === "0")){
+            alert("Please select a team");
+            return false;
+        }
+
+        if(bet == 0){
+            alert("Please enter an amount");
+            return false;
+        }
+        
 
         var req = {
-            TeamName:team,
+            username:document.cookie,
+            gameID:gameID,
+            TeamNumber:team,
             Bets:bet
         };
-
-        console.log(team)
-        console.log(bet)
 
         $.ajax({
             url:'/MakeBet',
@@ -27,6 +36,15 @@ $(document).ready(function(){
                 document.getElementById("PasswordInput").value = "";
             }
             */
+
+            if(data.message === "true"){
+                window.location.href = '/AfterLoginPage';
+            }
+            else{
+                alert(data.message);
+            }
+
+
             console.log(data)
             
         });
