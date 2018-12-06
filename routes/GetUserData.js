@@ -13,6 +13,7 @@ app.get('/', function(req, res){
 	var username = userInfo.username;
 
 	var getUser = 'Select * FROM users WHERE username=$1';
+
 	db.any(getUser, username)
 		.then(function(data){
 			if(data.length == 1){
@@ -22,7 +23,8 @@ app.get('/', function(req, res){
 				SendBackMessage(res, "user does not exist", "false");
 			}
 		})
-		.catch(function(data){
+		.catch(function(err){
+			console.log(err);
 			SendBackMessage(res, "Database error", "false");
 	});
 

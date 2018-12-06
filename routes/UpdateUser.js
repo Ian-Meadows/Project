@@ -7,15 +7,17 @@ var db = require('../database/Database');
 
 app.get('/', function(req, res){
 
+
+
 	var userInfo = req.query;
 
-	var oldUsername = req.oldUsername;
-	var username = req.username;
-	var password = req.password;
-	var email = req.email;
+	var oldUsername = userInfo.oldUsername;
+	var username = userInfo.username;
+	var password = userInfo.password;
+	var email = userInfo.email;
 
-	var updateUser = 'UPDATE game SET username=$2, email=$3, password=$4 WHERE username=$1;';
-	db.none(updateUser, [oldUsername, username, password, email])
+	var updateUser = 'UPDATE users SET username=$2, email=$3, password=$4 WHERE username=$1;';
+	db.none(updateUser, [oldUsername, username, email, password])
 		.then(function(data){
 			SendBackMessage(res, "true");
 		})
