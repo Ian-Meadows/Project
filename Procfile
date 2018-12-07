@@ -1,1 +1,1 @@
-web: node PageHandler.js
+web: node server.js

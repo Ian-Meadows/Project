@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-	var url = 'http://www.nfl.com/liveupdate/scorestrip/ss.json';
+	var url = 'https://www.nfl.com/liveupdate/scorestrip/ss.json';
       
     $.getJSON(url, function( data ) {
         var games = data.gms;

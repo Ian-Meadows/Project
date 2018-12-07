@@ -3,7 +3,7 @@ var app = express();
 
 
 module.exports = app;
-var db = require('../database/Database');
+var db = require('../database/database');
 
 //req:request
 //res:response

@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 
 module.exports = app;
-var db = require('../database/Database');
+var db = require('../database/database');
 
 app.get('/', function(req, res){
 
