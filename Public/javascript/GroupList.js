@@ -18,41 +18,41 @@ $(document).ready(function() {
 
 
 
-function CreateGroupList(div, data){
+function CreateGroupList(selector, data){
+
+    var row$ = $('<tr>');
+    var headerTr$ = $('<tr/>');
+    var cellValue;
 
 
-	for(var i = 0; i < data.length; i++){
-		//console.log(data[i].name);
+    // Set the column names, add to the table, selector
+    headerTr$.append($('<th/>').html('Group'));
+    headerTr$.append($('<th/>').html('Description'));
+    headerTr$.append($('<th/>').html('Link'));
 
-		//create elements
+    $(selector).append(headerTr$); 
 
-		var newP = document.createElement("P");
-		var text = document.createTextNode(data[i].name);
-		newP.appendChild(text);
+    // Gets scores and team names for each game and add to a table in the database
+    for (var i = 0; i < data.length; i++) {
 
-		var newButton = document.createElement("BUTTON");
-		text = document.createTextNode("CLICK ME");
-		newButton.appendChild(text);
-		
-		//append elements to newDiv
-		var newDiv = document.createElement("DIV");
-		newDiv.appendChild(newP);
-		newDiv.appendChild(newButton);
-		
-		//style stuff
-		newDiv.style = "background-color:red; outline: 3px solid black; margin:15px";
-		newP.style = "display:inline-block; margin-right:10px";
-		newButton.style = "display:inline-block; margin-right:10px";
+    	// Adjusts the color of the row depending on the game status
+    	row$ = $('<tr>');
 
-		newButton.setAttribute("id", data[i].id);
+        // Group date 
+        cellValue = data[i].name;
+        row$.append($('<td/>').html(cellValue));
 
-		//init class
-		newButton.onclick = ButtonClicked;
+        //Group Description
+        cellValue = data[i].description;
+        row$.append($('<td/>').html(cellValue));
 
-		//append newDiv to div
-		div.appendChild(newDiv);  
-	}
+        // Group Link 
+        cellValue = '<input type="submit" name=\"ViewGroup\" value=\"View Group\" /></form>';
+        row$.append($('<td/>').html(cellValue));
 
+          // Add the row data to the table
+        $(selector).append(row$);
+    }
 }
 
 function ButtonClicked(){

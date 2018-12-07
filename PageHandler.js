@@ -8,6 +8,7 @@ app.get('/', function(req, res){
     //res.end();
 });
 
+app.get('/favicon.ico', (req, res) => res.status(204));
 
 app.get('/GroupJoinPage', function(req, res){
     res.sendFile(__dirname + '/Public/html/GroupJoinPage.html');

@@ -32,7 +32,7 @@ function buildHtmlTable(selector) {
           // Adjusts the color of the row depending on the game status
           row$ = $('<tr>');
 
-          scoreColor = getScoreColor(games[i].home, games[i].vs)
+          scoreColor = getScoreColor(games[i].homescore, games[i].visitorscore)
 
           // Game date 
           cellValue = games[i].dayofweek;
@@ -128,6 +128,7 @@ function getStatusColor(status) {
 }
 
 function getScoreColor(home, visitor) {
+
   if (home > visitor){
     return ['<td style="color:green">', '<td style="color:red">'];
   }

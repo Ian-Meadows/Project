@@ -12,8 +12,8 @@ app.get('/Insert', function(req, res){
 	var username = info.username;
 	var games = info.games;
 
-	var top = games[0].gsis;
-	var bottom = games[games.length - 1].gsis;
+	var top = games[0].gameId;
+	var bottom = games[games.length - 1].gameId;
 
 	var getGame = 'SELECT * FROM game WHERE id>$1 - 1 AND id < $2 + 1';
 	db.any(getGame, [top, bottom])
@@ -22,18 +22,18 @@ app.get('/Insert', function(req, res){
 				for(var i = 0; i < games.length; i++){
 					var exists = false;
 					for(var j = 0; j < data.length; j++){
-						if(data[j].id == games[i].gsis){
+						if(data[j].id == games[i].gameId){
 							exists = true;
 							break;
 						}
 					}
 					if(exists){
-						if(games[i].q === 'F' || games[i].q === 'FO'){
-							GameFinished(res, games[i].gsis);
-							games[i].q = 'D';
+						if(games[i].status === 'F' || games[i].status === 'FO'){
+							GameFinished(res, games[i].gameId);
+							//games[i].status = 'D';
 						}
 						var updateGame = 'UPDATE game SET homescore=$2, visitorscore=$3, status=$4 WHERE id=$1;';
-						db.none(updateGame, [games[i].gsis, games[i].hs, games[i].vs, games[i].q])
+						db.none(updateGame, [games[i].gameId, games[i].homeTeamScore, games[i].visitorTeamScore, games[i].status])
 							.then(function(data){
 								//console.log('updated game');
 							})
@@ -43,7 +43,7 @@ app.get('/Insert', function(req, res){
 					}
 					else{
 						var insertGame = 'INSERT INTO game(id, home, homescore ,visitor, visitorscore, startdate, dayofweek, status) values($1, $2, $3, $4, $5, $6, $7, $8);';
-						db.none(insertGame, [games[i].gsis, games[i].hnn, games[i].hs, games[i].vnn, games[i].vs, games[i].eid.substring(0, games[i].eid.length - 2), games[i].d, games[i].q])
+						db.none(insertGame, [games[i].gameId, games[i].homeNickname, games[i].homeTeamScore, games[i].visitorNickname, games[i].visitorTeamScore, games[i].edate, games[i].day, games[i].status])
 							.then(function(data){
 								//console.log('inserted game');
 							})
@@ -58,12 +58,12 @@ app.get('/Insert', function(req, res){
 			}
 			else{
 				for(var i = 0; i < games.length; i++){
-					if(games[i].q === 'F' || games[i].q === 'FO'){
-						GameFinished(res, games[i].gsis);
-						games[i].q = 'D';
+					if(games[i].status === 'F' || games[i].status === 'FO'){
+						GameFinished(res, games[i].gameId);
+						//games[i].status = 'D';
 					}
 					var updateGame = 'UPDATE game SET homescore=$2, visitorscore=$3, status=$4 WHERE id=$1;';
-					db.none(updateGame, [games[i].gsis, games[i].hs, games[i].vs, games[i].q])
+					db.none(updateGame, [games[i].gameId, games[i].homeTeamScore, games[i].visitorTeamScore, games[i].status])
 						.then(function(data){
 							//console.log('updated game');
 						})
@@ -103,7 +103,7 @@ app.get('/Get', function(req, res){
 
 function GameFinished(res, gameID){
 
-	var gameID = msg.gsis;
+	//var gameID = msg.gameId;
 
 	var getGame = 'SELECT * FROM game WHERE id=$1;';
 
@@ -114,7 +114,7 @@ function GameFinished(res, gameID){
 
 	var winningBets = 0;
 
-	console.log("GamesUpdating");
+	//console.log("GamesUpdating");
 
 	var jackpot = 0;
 
