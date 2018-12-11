@@ -14,14 +14,10 @@ app.get('/', function(req, res){
 	var bet = query.Bets;
 	var gameID = query.gameID;
 	var user = query.username;
-	var hasGroupID = query.hasGroupID;
 	var userID;
-	var groupid = null;
+	var groupid = query.groupid;
 	var updatedFunds =0;
 
-	if(hasGroupID){
-		groupid = query.groupid;
-	}
 
 
 
