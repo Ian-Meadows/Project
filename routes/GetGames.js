@@ -237,23 +237,23 @@ class GroupBets{
 	}
 
 	AddBets(bet){
-		bets.push(bet);
+		this.bets.push(bet);
 	}
 
 	SetUpJackpot(){
-		for(var i = 0; i < bets.length; i++){
-			this.jackpot += bets[i].bet;
-			if(this.winningTeam === bets[i].team){
-				winningBets+=bets[i].bet;
+		for(var i = 0; i < this.bets.length; i++){
+			this.jackpot += this.bets[i].bet;
+			if(this.winningTeam === this.bets[i].team){
+				this.winningBets+=this.bets[i].bet;
 			}
 		}
 	}
 
 	SetUpPayout(){
-		if(bets[i].team == winningTeam){
-			var percent = bets[i].bet / winningBets;
-			var totalWon = jackpot*percent;
-			UpdateUserFund(bets[i].userid, totalWon);
+		if(this.bets[i].team == this.winningTeam){
+			var percent = this.bets[i].bet / this.winningBets;
+			var totalWon = this.jackpot*percent;
+			UpdateUserFund(this.bets[i].userid, totalWon);
 		}
 	}
 
