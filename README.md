@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Project
 Paradise Gambling
 - American Football gambling using schmeckles (currency)
@@ -15,10 +14,3 @@ User instructions:
 	- find game you're interested in betting on
 	- place bet
 	- wait for game to end
-=======
-# Project-Paradise Gambling
-
-Paradise Gambling is a website about sport gambling with fake money.
-
-Features: 1.Login and Create an acount
->>>>>>> 9faae8a84791d2bd1059cbcf5b25adf5d0d5b105
