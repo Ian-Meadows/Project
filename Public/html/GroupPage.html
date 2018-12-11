@@ -21,12 +21,13 @@
         vars[key] = value;
       });
 
-      console.log(vars)
-      console.log('Hello!')
-      console.log(vars.id)
+      //console.log(vars)
+      //console.log('Hello!')
+      //console.log(vars.id)
       
       window.onload = function() {
-        //document.getElementById("home").innerHTML=vars['home'];
+
+        document.getElementById("buttonValue").value=vars.id;
         //document.getElementById("visitor").innerHTML=vars['visitor'];
       } 
 
@@ -57,8 +58,9 @@
     </center>
 </div>
 
-<form>
-    <input type="submit" value="Make Some Bets"/>
+<form action="GroupBets" method="get">
+    <input type="hidden" name='id' id = "buttonValue">
+    <input type="submit" name = "buttonText" value="Make Some Bets">
 </form>
 
 
