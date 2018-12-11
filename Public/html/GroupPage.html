@@ -13,7 +13,30 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+
+      var vars = {};
+      var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+      });
+
+      console.log(vars)
+      console.log('Hello!')
+      console.log(vars.id)
+      
+      window.onload = function() {
+        //document.getElementById("home").innerHTML=vars['home'];
+        //document.getElementById("visitor").innerHTML=vars['visitor'];
+      } 
+
+
+    </script>
+
+
 </head>
+<body>
+
 <nav class="navigation-header"></nav>
       <nav class="navbar navbar-dark bg-dark">
       <a class="navbar-brand" href="/">
@@ -23,6 +46,7 @@
 			Group Page
 		</h2>
     </nav>
+    
 <div class="content" style="text-align:center">
 		<div class="card bg-light mb-3 text-center" style="width: 18rem; height: 15rem">
 		<center>
@@ -32,6 +56,11 @@
       </form>
     </center>
 </div>
+
+<form>
+    <input type="submit" value="Make Some Bets"/>
+</form>
+
 
 <div class="btn-group btn-group-toggle"  data-toggle="buttons">
   <label class="btn btn-secondary active">

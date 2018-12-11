@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="../css/main.css" />
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-2.2.0.js"></script>
+
+    <script src="../javascript/AfterLoginFunctions.js"></script>
+    <script src="../javascript/Logout.js"></script>
+    
+    
+    <title>Available Games</title>
+
+  </head>
+
+  <body onLoad="buildHtmlTable('#excelDataTable'); WindowLoaded()">
+    
+
+  	<nav class="navigation-header"></nav>
+      <nav class="navbar navbar-light bg-light">
+      	<a class="navbar-brand" href="/">
+      <img src="../resources/logo.png" class="img-rounded" height="80" width="80">
+    </a>
+        <form class="form-inline" action="/GroupList">
+          <button class="btn btn-success my-2 my-sm-0">View My Groups</button>
+        </form>
+        <form class="form-inline" action="/GroupCreationPage">
+          <button class="btn btn-success my-2 my-sm-0">Create Group</button>
+        </form>
+        <form class="form-inline" action="/GroupJoinPage">
+          <button class="btn btn-success my-2 my-sm-0">Join Group</button>
+        </form>
+        <form class="form-inline" action="/ProfilePage">
+          <button class="btn btn-success my-2 my-sm-0">Edit Account</button>
+        </form>
+  		  <form class="form-inline" action="/LoginPage">
+    		  <button class="btn btn-danger my-2 my-sm-0" type="Log-Out" id="LogoutButton">Log Out</button>
+  		  </form>
+
+     </nav>
+    </nav>
+
+    <br><br>
+
+    <table id="excelDataTable" border="2" align="center" cellpadding="5"></table>
+
+
+  </body>
+</html>

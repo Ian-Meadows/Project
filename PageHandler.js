@@ -46,6 +46,10 @@ app.get('/MakeBetPage', function(req, res){
     res.sendFile(__dirname + '/Public/html/MakeBetPage.html');
 });
 
+app.get('/GroupBets', function(req, res){
+    res.sendFile(__dirname + '/Public/html/GroupBets.html');
+});
+
 
 
 module.exports = app;
