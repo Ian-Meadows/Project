@@ -5,6 +5,7 @@ $(document).ready(function(){
         var gameID = vars['id'];
         var team = document.getElementById("TeamName").value;
         var bet = document.getElementById("Bet").value;
+        var groupid = vars['groupid'];
         if(!(team === "1" || team === "0")){
             alert("Please select a team");
             return false;
@@ -20,7 +21,8 @@ $(document).ready(function(){
             username:document.cookie,
             gameID:gameID,
             TeamNumber:team,
-            Bets:bet
+            Bets:bet,
+            groupid:groupid
         };
 
         $.ajax({
