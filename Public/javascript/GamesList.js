@@ -71,19 +71,19 @@ function cutDownGameSize(games){
 }
 
 function setGameStatus(status){
-	if (status === "1Q"){
+	if (status === "Q1"){
 		return 1;
 	}
 
-	if (status === "2Q"){
+	if (status === "Q2"){
 		return 2;
 	}
 
-	if (status === "3Q"){
+	if (status === "Q3"){
 		return 3;
 	}
 
-	if (status === "4Q"){
+	if (status === "Q4"){
 		return 4;
 	}
 

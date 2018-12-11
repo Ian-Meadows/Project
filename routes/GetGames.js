@@ -15,7 +15,7 @@ app.get('/Insert', function(req, res){
 	var top = games[0].gameId;
 	var bottom = games[games.length - 1].gameId;
 
-	var getGame = 'SELECT * FROM game WHERE id>$1 - 1 AND id < $2 + 1';
+	var getGame = 'SELECT * FROM game';
 	db.any(getGame, [top, bottom])
 		.then(function(data){
 			if(data.length < games.length){
