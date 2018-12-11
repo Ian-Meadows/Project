@@ -17,7 +17,7 @@
 
     <script src="https://code.jquery.com/jquery-2.2.0.js"></script>
 
-    <script src="../javascript/AfterLoginFunctions.js"></script>
+    <script src="../javascript/GroupBet.js"></script>
     <script src="../javascript/Logout.js"></script>
     
     
@@ -25,27 +25,20 @@
 
     <script type="text/javascript">
 
-      var vars = {};
-      var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
-        vars[key] = value;
-      });
+      $(document).ready(function() { 
+        var vars = {};
+        var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+          vars[key] = value;
+        });
 
-      //console.log(vars)
-      //console.log('Hello!')
-      //console.log(vars.id)
-      /*
-      window.onload = function() {
-
-        document.getElementById("buttonValue").value=vars.id;
-        //document.getElementById("visitor").innerHTML=vars['visitor'];
-      } 
-      */
+        buildGroupHtmlTable('#excelDataTable', vars.id);
+      }); 
 
     </script>
 
   </head>
 
-  <body onLoad="buildHtmlTable('#excelDataTable'); WindowLoaded()">
+  <body onLoad="WindowLoaded()">
     
 
   	<nav class="navigation-header"></nav>
