@@ -30,7 +30,7 @@ app.get('/Insert', function(req, res){
 					if(exists){
 						if(games[i].status === 'F' || games[i].status === 'FO'){
 							GameFinished(res, games[i].gameId);
-							//games[i].status = 'D';
+							games[i].status = 'D';
 						}
 						var updateGame = 'UPDATE game SET homescore=$2, visitorscore=$3, status=$4 WHERE id=$1;';
 						db.none(updateGame, [games[i].gameId, games[i].homeTeamScore, games[i].visitorTeamScore, games[i].status])
@@ -60,7 +60,7 @@ app.get('/Insert', function(req, res){
 				for(var i = 0; i < games.length; i++){
 					if(games[i].status === 'F' || games[i].status === 'FO'){
 						GameFinished(res, games[i].gameId);
-						//games[i].status = 'D';
+						games[i].status = 'D';
 					}
 					var updateGame = 'UPDATE game SET homescore=$2, visitorscore=$3, status=$4 WHERE id=$1;';
 					db.none(updateGame, [games[i].gameId, games[i].homeTeamScore, games[i].visitorTeamScore, games[i].status])
@@ -118,53 +118,80 @@ function GameFinished(res, gameID){
 
 	var jackpot = 0;
 
-	db.any(getGame, gameID)
+	var groupBets = [];
+
+	groupBets.push(new GroupBets(null, true));
+
+	var getGroups = 'SELECT * FROM grouptable';
+
+	db.any(getGroups)
 		.then(function(data){
-			if(data.length == 1){
-				//set team names
-				if(data[0].homescore > data[0].visitorscore){
-					winningTeam = data[0].home;
-				}
-				else{
-					winningTeam = data[0].visitor;
-				}
+			for(var i = 0; i < data.length; i++){
 
-				var getBets = 'SELECT * FROM bets WHERE gameid=$1;';
-				db.any(getBets, data[0].id)
-					.then(function(data){
-						//get total jackpot
-						//setup side bets
-						for(var i = 0; i < data.length; i++){
-							jackpot+=data[i].bet;
-							if(winningTeam === data[i].team){
-								winningBets+=data[i].bet;
-							}
+				groupBets.push(new GroupBets(data[i].id, false));
+			}
 
+			db.any(getGame, gameID)
+				.then(function(data){
+					if(data.length == 1){
+						//set team names
+						if(data[0].homescore > data[0].visitorscore){
+							winningTeam = data[0].home;
+						}
+						else{
+							winningTeam = data[0].visitor;
 						}
 
-						//update user funds
-						for(var i = 0; i < data.length; i++){
-							if(data[i].team == winningTeam){
-								var percent = data[i].bet / winningBets;
-								var totalWon = jackpot*percent;
-								UpdateUserFund(data[i].userid, totalWon);
-							}
-							
-						}
+						var getBets = 'SELECT * FROM bets WHERE gameid=$1;';
+						db.any(getBets, data[0].id)
+							.then(function(data){
 
-					})
-					.catch(function(err){
-						console.log(err);
-					});
-			}
-			else{
-				console.log("ERROR: group does not exist");
-			}
-			
+								//init groups
+								for(var i = 0; i < data.length; i++){
+									var groupIndex = 0;
+									for(var j = 0; j < groupBets.length; j++){
+										if(data[i].groupid == null){
+											groupIndex = 0;
+											break;
+										}
+										else if(data[i].groupid == groupBets[j].groupID){
+											groupIndex = j;
+											break;
+										}
+									}
+									groupBets[groupIndex].AddBets(data[i]);
+									groupBets[groupIndex].SetWinningTeam(winningTeam);
+
+								}
+
+								//get total jackpot
+								//setup side bets
+								for(var i = 0; i < groupBets.length; i++){
+									
+									groupBets[i].SetUpJackpot();
+									groupBets[i].SetUpPayout();
+								}
+
+							})
+							.catch(function(err){
+								console.log(err);
+							});
+					}
+					else{
+						console.log("ERROR: group does not exist");
+					}
+					
+				})
+				.catch(function(err){
+					console.log(err);
+			});
+
 		})
 		.catch(function(err){
 			console.log(err);
 	});
+
+	
 
 }
 
@@ -190,4 +217,56 @@ function SendBackMessage(res, msg){
 	res.status(200)
 		.json(jmessage)
 		.end();
+}
+
+class GroupBets{
+
+
+
+	constructor(groupID, isGlobal){
+		this.groupID = groupID;
+		this.isGlobal = isGlobal;
+		this.bets = [];
+		this.winningTeam = "";
+		this.winningBets = 0;
+		this.jackpot = 0;
+	}
+
+	SetWinningTeam(winningTeam){
+		this.winningTeam = winningTeam;
+	}
+
+	AddBets(bet){
+		bets.push(bet);
+	}
+
+	SetUpJackpot(){
+		for(var i = 0; i < bets.length; i++){
+			this.jackpot += bets[i].bet;
+			if(this.winningTeam === bets[i].team){
+				winningBets+=bets[i].bet;
+			}
+		}
+	}
+
+	SetUpPayout(){
+		if(bets[i].team == winningTeam){
+			var percent = bets[i].bet / winningBets;
+			var totalWon = jackpot*percent;
+			UpdateUserFund(bets[i].userid, totalWon);
+		}
+	}
+
+	UpdateUserFund(userID, fundsToAdd){
+
+		var updateUser = 'UPDATE users SET funds=funds+$2 WHERE id=$1;';
+		db.any(updateUser, [userID, fundsToAdd])
+			.then(function(data){
+				console.log("funds added");
+			})
+			.catch(function(err){
+				console.log(err);
+		});
+
+	}
 }

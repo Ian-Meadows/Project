@@ -19,6 +19,9 @@ app.get('/', function(req, res){
 	var groupid = null;
 	var updatedFunds =0;
 
+	if(hasGroupID){
+		groupid = query.groupid;
+	}
 
 
 
