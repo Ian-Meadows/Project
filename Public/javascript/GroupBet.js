@@ -78,7 +78,7 @@ function buildGroupHtmlTable(selector, groupid) {
 
 // Makes the game status row look nice
 function getStatus(status) {
-  if (status == 'F'){
+  if (status == 'F' || status == 'D'){
     return 'Final';
   }
 

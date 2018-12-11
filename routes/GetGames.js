@@ -226,7 +226,7 @@ class GroupBets{
 	constructor(groupID, isGlobal){
 		this.groupID = groupID;
 		this.isGlobal = isGlobal;
-		this.bets = [];
+		this.bets = new Array();
 		this.winningTeam = "";
 		this.winningBets = 0;
 		this.jackpot = 0;
