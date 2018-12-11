@@ -13,6 +13,9 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-2.2.0.js"></script>
+
+    <script src="../javascript/ShowGroupUsers.js"></script>
 
     <script type="text/javascript">
 
@@ -27,7 +30,7 @@
       
       window.onload = function() {
 
-        document.getElementById("buttonValue").value=vars.id;
+        //document.getElementById("buttonValue").value=vars.id;
         //document.getElementById("visitor").innerHTML=vars['visitor'];
       } 
 
@@ -56,91 +59,21 @@
       <h4 class="Group Name">Group Name</h4>     
       </form>
     </center>
-</div>
-
-<form action="GroupBets" method="get">
+    <form action="GroupBets" method="get">
     <input type="hidden" name='id' id = "buttonValue">
     <input type="submit" name = "buttonText" value="Make Some Bets">
 </form>
 
 
-<div class="btn-group btn-group-toggle"  data-toggle="buttons">
-  <label class="btn btn-secondary active">
-    <input type="radio" name="options" id="option1" autocomplete="off" checked> Members
-  </label>
-  <label class="btn btn-secondary">
-    <input type="radio" name="options" id="option2" autocomplete="off"> Recent
-  </label>
-  <label class="btn btn-secondary">
-    <input type="radio" name="options" id="option3" autocomplete="off"> Top Members
-  </label>
+<div id = "users">
+  <h3>
+    Users In Group:
+  </h3>
 </div>
-</br>
+  </div>
+</div>
 
-    <table class="table table-striped table-dark" style="width:30%">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Name</th>
-      <th scope="col">Wallet</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>--</td>
-      <td>--</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>--</td>
-      <td>--</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>--</td>
-      <td>--</td>
-    </tr>
-    <tr>
-      <th scope="row">4</th>
-      <td>--</td>
-      <td>--</td>
-    </tr>
-    <tr>
-      <th scope="row">5</th>
-      <td>--</td>
-      <td>--</td>
-    </tr>
-    <tr>
-      <th scope="row">6</th>
-      <td>--</td>
-      <td>--</td>
-    </tr>
-    <tr>
-      <th scope="row">7</th>
-      <td>--</td>
-      <td>--</td>
-    </tr>
-    <tr>
-      <th scope="row">8</th>
-      <td>--</td>
-      <td>--</td>
-    </tr>
-    <tr>
-      <th scope="row">9</th>
-      <td>--</td>
-      <td>--</td>
-    </tr>
-    <tr>
-      <th scope="row">10</th>
-      <td>--</td>
-      <td>--</td>
-    </tr>
-  </tbody>
-</table>
 
-</div>
-</div>
 
 
 </body>

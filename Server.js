@@ -119,6 +119,7 @@ var GetGames = require('./routes/GetGames');
 var GetUserData = require('./routes/GetUserData');
 var UpdateUser = require('./routes/UpdateUser');
 var MakeBet = require('./routes/MakeBet');
+var GetGroupUsers = require('./routes/GetGroupUsers');
 
 app.use('/', PageHandler);
 app.use('/CreateAccount', CreateAccount);
@@ -130,6 +131,7 @@ app.use('/GetGames', GetGames);
 app.use('/GetUserData', GetUserData);
 app.use('/UpdateUser', UpdateUser);
 app.use('/MakeBet', MakeBet);
+app.use('/GetGroupUsers', GetGroupUsers);
 
 let port = process.env.PORT;
 if (port == null || port == "") {
