@@ -47,7 +47,8 @@ function CreateGroupList(selector, data){
         row$.append($('<td/>').html(cellValue));
 
         // Group Link 
-        cellValue = '<input type="submit" name=\"ViewGroup\" value=\"View Group\" /></form>';
+        cellValue = '<form action=\"GroupPage\" method=\"get\"><input type="hidden" name=\'id\' value = '+data[i].id+'><input type="submit" name=\"value\" value=\"View Group\" /></form>';
+        //cellValue = '<input type="submit" name=\"ViewGroup\" value=\"View Group\" /></form>';
         row$.append($('<td/>').html(cellValue));
 
           // Add the row data to the table
