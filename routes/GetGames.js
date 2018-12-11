@@ -250,11 +250,14 @@ class GroupBets{
 	}
 
 	SetUpPayout(){
-		if(this.bets[i].team == this.winningTeam){
-			var percent = this.bets[i].bet / this.winningBets;
-			var totalWon = this.jackpot*percent;
-			UpdateUserFund(this.bets[i].userid, totalWon);
+		for(var i = 0; i < this.bets[i].length; i++){
+			if(this.bets[i].team == this.winningTeam){
+				var percent = this.bets[i].bet / this.winningBets;
+				var totalWon = this.jackpot*percent;
+				UpdateUserFund(this.bets[i].userid, totalWon);
+			}
 		}
+		
 	}
 
 	UpdateUserFund(userID, fundsToAdd){
