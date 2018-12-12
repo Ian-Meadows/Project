@@ -2,8 +2,15 @@
 Paradise Gambling
 - American Football gambling using schmeckles (currency)
 
-run code: /Project/Server.js
-run tests: /Project/Public/javascript/ClientSide/ConnectionTest.js
+Run code:
+- Go to project folder and in terminal/command line and type “node server.js”
+- Then go to the location it prints out. 
+- Note: the database will need to be created before hand with the name of database.
+
+Run Tests:
+- go to project folder
+- npm install -save-dev jest
+- npm test
 
 User instructions: 
 - create account (starting schmeckles = 100)
@@ -19,162 +26,11 @@ User instructions:
 	- wait for game to end
 
 repo structure:
-+-Project/
-  |
-  +-database/
-  | |
-  | +-database.js
-  | |
-  | +-TableCreation.sql
-  | |
-  | +-DatabaseCreation.sql
-  | |
-  | +-db design.pdf
-  |
-  +-.DS_Store
-  |
-  +-TODO.txt
-  |
-  +-server.js
-  |
-  +-ProfilePage.html
-  |
-  +-PageHandler.js
-  |
-  +-README.md
-  |
-  +-Public/
-  | |
-  | +-.DS_Store
-  | |
-  | +-css/
-  | | |
-  | | +-.DS_Store
-  | | |
-  | | +-profilepage.css
-  | | |
-  | | +-login.css
-  | | |
-  | | +-GroupPage.css
-  | | |
-  | | +-main.css
-  | | |
-  | | +-GroupCreationPage.css
-  | | |
-  | | +-MainPage.css
-  | | |
-  | | +-AccountCreationPage.css
-  | |
-  | +-resources/
-  | | |
-  | | +-.DS_Store
-  | | |
-  | | +-default account-photo.png
-  | | |
-  | | +-ball-fun-game-364308.jpg
-  | | |
-  | | +-grass-wallpapers.jpg
-  | | |
-  | | +-logo.png
-  | | |
-  | | +-Read me before using your logo.txt
-  | |
-  | +-html/
-  | | |
-  | | +-GroupCreationPage.html
-  | | |
-  | | +-AccountCreationPage.html
-  | | |
-  | | +-.DS_Store
-  | | |
-  | | +-GroupBets.html
-  | | |
-  | | +-ProfilePage.html
-  | | |
-  | | +-MakeBetPage.html
-  | | |
-  | | +-GroupJoinPage.html
-  | | |
-  | | +-GroupList.html
-  | | |
-  | | +-LandingPage.html
-  | | |
-  | | +-LoginPage.html
-  | | |
-  | | +-GroupPage.html
-  | | |
-  | | +-AfterLoginPage.html
-  | |
-  | +-javascript/
-  |   |
-  |   +-LoginFunctions.js
-  |   |
-  |   +-AccountCreation.js
-  |   |
-  |   +-.DS_Store
-  |   |
-  |   +-ProfileUpload.js
-  |   |
-  |   +-BetList.js
-  |   |
-  |   +-UpdateProfile.js
-  |   |
-  |   +-Logout.js
-  |   |
-  |   +-GroupCreation.js
-  |   |
-  |   +-GamesList.js
-  |   |
-  |   +-GetBet.js
-  |   |
-  |   +-LandingPageFunctions.js
-  |   |
-  |   +-GroupList.js
-  |   |
-  |   +-ClientSide/
-  |   | |
-  |   | +-ConnectionTest.js
-  |   |
-  |   +-GroupBet.js
-  |   |
-  |   +-JoinGroupFunctions.js
-  |   |
-  |   +-AfterLoginFunctions.js
-  |
-  +-package-lock.json
-  |
-  +-package.json
-  |
-  +-Procfile
-  |
-  +-ProjectMilestone7_TeamParadise.txt
-  |
-  +-views/
-  | |
-  | +-.DS_Store
-  | |
-  | +-layouts/
-  | |
-  | +-account/
-  |
-  +-routes/
-    |
-    +-CreateGroup.js
-    |
-    +-JoinGroup.js
-    |
-    +-MakeBet.js
-    |
-    +-.DS_Store
-    |
-    +-UpdateUser.js
-    |
-    +-GetGames.js
-    |
-    +-GetUserData.js
-    |
-    +-GetGroups.js
-    |
-    +-accounts.js
-    |
-    +-Login.js
+
+- Server side stuff is in the main folder, routes folder, and database folder
+- Client side stuff is in the Public folder
+	- JavaScript is in the javascript folder
+	- html is in the html folder
+	- css is in the css folder
+	- images are in the resources folder
+- All node packages are in the node_modules folder
