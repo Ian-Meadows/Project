@@ -1,5 +1,5 @@
 $(document).ready(function(){ 
-	if(document.cookie === "true"){
+	if(document.cookie != ""){
 		window.location.href = '/AfterLoginPage';
 	}
     // your code
